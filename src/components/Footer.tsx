@@ -1,0 +1,136 @@
+import { useState, FormEvent } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
+import '../styles/footer.css';
+
+const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [agreed, setAgreed] = useState(false);
+
+  const handleNewsletterSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (email && agreed) {
+      alert('Thank you for subscribing!');
+      setEmail('');
+      setAgreed(false);
+    }
+  };
+
+  return (
+    <footer className="footer">
+      <div className="footer-paper-cut"></div>
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-grid">
+            {/* Brand */}
+            <div className="footer-brand">
+              <div className="footer-logo">
+                <img src={logo} alt="Basilico Coffee" />
+              </div>
+              <p>
+                Welcome to our Basilico Coffee House. Lorem simply text amet cing
+                elit aenean feugiat. ut hendrerit mi pulvinar vel.
+              </p>
+              <div className="footer-social">
+                <a href="#" className="social-icon" aria-label="Facebook">f</a>
+                <a href="#" className="social-icon" aria-label="Twitter">𝕏</a>
+                <a href="#" className="social-icon" aria-label="Instagram">📷</a>
+                <a href="#" className="social-icon" aria-label="Pinterest">📌</a>
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div className="footer-section">
+              <h3>Contact Us</h3>
+              <div className="footer-contact-item">
+                <p className="footer-contact-label">Location:</p>
+                <p className="footer-contact-value">
+                  4517 Washington Ave.<br />
+                  Manchester, Kentucky 39495, USA
+                </p>
+              </div>
+              <div className="footer-contact-item">
+                <p className="footer-contact-label">Book A Table:</p>
+                <p className="footer-contact-value">
+                  <a href="mailto:basilicofood123@gmail.com">basilicofood123@gmail.com</a>
+                </p>
+                <p className="footer-contact-value">
+                  <a href="tel:7346651852">(734) 665-1852</a>
+                </p>
+              </div>
+            </div>
+
+            {/* Hours */}
+            <div className="footer-section">
+              <h3>Hour Open</h3>
+              <div className="footer-hours-item">
+                <span className="footer-hours-day">Monday – Friday:</span>
+                <span className="footer-hours-time">9:00am – 22:00pm</span>
+              </div>
+              <div className="footer-hours-item">
+                <span className="footer-hours-day">Saturday:</span>
+                <span className="footer-hours-time">10:00am – 23:00pm</span>
+              </div>
+              <div className="footer-hours-item">
+                <span className="footer-hours-day">Sunday:</span>
+                <span className="footer-hours-time">5:00pm – 23:00pm</span>
+              </div>
+              <div className="footer-hours-item">
+                <span className="footer-hours-day">Holidays:</span>
+                <span className="footer-hours-time">Closed</span>
+              </div>
+              <div className="footer-hours-item">
+                <span className="footer-hours-day">Happy Hours:</span>
+                <span className="footer-hours-time">18:00pm – 20:00pm</span>
+              </div>
+            </div>
+
+            {/* Newsletter */}
+            <div className="footer-section footer-newsletter">
+              <h3>Newsletters & Event</h3>
+              <p>
+                Register your email to not miss any news and offers from us
+              </p>
+              <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
+                <div className="newsletter-input-wrapper">
+                  <input
+                    type="email"
+                    className="newsletter-input"
+                    placeholder="Email address..."
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <button type="submit" className="newsletter-btn" aria-label="Subscribe">
+                    ➤
+                  </button>
+                </div>
+                <label className="newsletter-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => setAgreed(e.target.checked)}
+                    required
+                  />
+                  I agree to the Privacy Policy
+                </label>
+              </form>
+            </div>
+          </div>
+
+          {/* Bottom */}
+          <div className="footer-bottom">
+            <span className="footer-coffee-icon">☕</span>
+          </div>
+          <p className="footer-copyright">
+            © 2024 Basilico Coffee. All Rights Reserved. | 
+            <Link to="/"> Privacy Policy</Link> | 
+            <Link to="/"> Terms of Service</Link>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
