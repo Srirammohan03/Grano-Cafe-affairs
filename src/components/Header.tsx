@@ -1,148 +1,208 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Search, ShoppingBag, Menu, X } from 'lucide-react';
-import logo from '../assets/logo.png';
-import '../styles/header.css';
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Search,
+  ShoppingBag,
+  Menu,
+  X,
+  Phone,
+  MapPin,
+  ChevronDown,
+} from "lucide-react";
+import logo from "../assets/logo.png"; // Ensure this path is correct
+import "../styles/header.css";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Handle Scroll Effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      // Trigger scroll effect slightly earlier for smoother transition
+      setIsScrolled(window.scrollY > 50);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    // Scroll to top on route change
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
+  useEffect(() => {
+    const original = document.body.style.overflow;
+
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = original || "";
+    }
+
+    return () => {
+      document.body.style.overflow = original || "";
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/menu', label: 'Menu' },
-    { path: '/about', label: 'About' },
-    { path: '/events', label: 'Events' },
-    { path: '/contact', label: 'Contact' },
+    { path: "/", label: "HOME" },
+    { path: "/menu", label: "MENU" },
+    { path: "/reservation", label: "RESERVATION" },
+    { path: "/pages", label: "PAGES" },
+    { path: "/blog", label: "BLOG" },
+    { path: "/contact", label: "CONTACT" },
   ];
 
-  const handleNavClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      {/* Top Bar */}
-      <div className="top-bar">
-        <div className="container">
-          <div className="top-bar-content">
-            <div className="top-bar-item">
-              <div className="top-bar-icon">📍</div>
-              <div className="top-bar-text">
-                <span className="top-bar-label">Location</span>
-                <span className="top-bar-value">448 West Foxrun St. Bronx, NY 10472</span>
+    <>
+      <header className={`header ${isScrolled ? "scrolled" : ""}`}>
+        {/* === TOP INFO BAR (Collapses on scroll) === */}
+        <div className="top-bar">
+          <div className="container">
+            <div className="top-bar-content">
+              <div className="top-bar-item">
+                <div className="top-bar-icon">
+                  <MapPin size={16} fill="currentColor" />
+                </div>
+                <div className="top-bar-text">
+                  <span className="top-bar-label">LOCATION</span>
+                  <span className="top-bar-value">
+                    448 West Foxrun St. Bronx, NY 10472
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="top-bar-item">
-              <div className="top-bar-text" style={{ textAlign: 'right' }}>
-                <span className="top-bar-label">Call Delivery</span>
-                <span className="top-bar-value">(734) 665-1852 or (770) 942-7739</span>
+              <div className="top-bar-item">
+                <div className="top-bar-text right-align">
+                  <span className="top-bar-label">CALL DELIVERY</span>
+                  <span className="top-bar-value">(734) 665-1852</span>
+                </div>
+                <div className="top-bar-icon">
+                  <Phone size={16} fill="currentColor" />
+                </div>
               </div>
-              <div className="top-bar-icon">📞</div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Navigation */}
-      <div className="container">
-        <nav className="header-nav">
-          <div className="nav-wrapper">
-            {/* Mobile Menu Toggle */}
-            <button
-              className={`menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+        {/* === MAIN NAVIGATION === */}
+        <div className="main-nav-wrapper">
+          <nav className="main-nav container">
+            <div className="container">
+              <div className="nav-inner">
+                {/* Mobile Hamburger (Left) */}
+                <button
+                  className="menu-toggle"
+                  onClick={() => setIsMobileMenuOpen(true)}
+                  aria-label="Open menu"
+                >
+                  <Menu size={28} />
+                </button>
 
-            {/* Navigation Links - Left */}
-            <ul className={`nav-links nav-links-left ${isMobileMenuOpen ? 'active' : ''}`}>
-              {navLinks.slice(0, 2).map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
-                    onClick={handleNavClick}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                {/* Desktop Left Links */}
+                <ul className="nav-links left">
+                  {navLinks.slice(0, 3).map((link) => (
+                    <li key={link.path}>
+                      <Link
+                        to={link.path}
+                        className={
+                          location.pathname === link.path ? "active" : ""
+                        }
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
 
-            {/* Center Logo */}
-            <Link to="/" className="nav-logo" onClick={handleNavClick}>
-              <img src={logo} alt="GRANO Coffee" loading="eager" />
-              <span className="logo-text">GRANO</span>
-            </Link>
+                {/* Center Logo */}
+                <Link to="/" className="nav-logo">
+                  <div className="logo-circle">
+                    <img src={logo} alt="Basilico Cafe" />
+                  </div>
+                </Link>
 
-            {/* Navigation Links - Right */}
-            <ul className={`nav-links nav-links-right ${isMobileMenuOpen ? 'active' : ''}`}>
-              {navLinks.slice(2).map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
-                    onClick={handleNavClick}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                {/* Right Section (Links + Icons) */}
+                <div className="right-section">
+                  <ul className="nav-links right">
+                    {navLinks.slice(3).map((link) => (
+                      <li key={link.path}>
+                        <Link
+                          to={link.path}
+                          className={
+                            location.pathname === link.path ? "active" : ""
+                          }
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
 
-            {/* Nav Actions */}
-            <div className="nav-actions">
-              <button className="nav-action-btn" aria-label="Search">
-                <Search size={20} />
-              </button>
-              <button className="nav-action-btn cart-btn" aria-label="Cart">
-                <ShoppingBag size={20} />
-                <span className="cart-badge">0</span>
-              </button>
+                  <div className="nav-actions">
+                    <button
+                      className="action-btn desktop-search"
+                      aria-label="Search"
+                    >
+                      <Search size={22} />
+                    </button>
+                    <button className="action-btn cart-btn" aria-label="Cart">
+                      <ShoppingBag size={22} />
+                      <span className="cart-badge">0</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </nav>
-      </div>
+          </nav>
+        </div>
+      </header>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}>
-        <ul className="mobile-nav-links">
-          {navLinks.map((link) => (
-            <li key={link.path}>
-              <Link
-                to={link.path}
-                className={`mobile-nav-link ${location.pathname === link.path ? 'active' : ''}`}
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  handleNavClick();
-                }}
+      {/* === MOBILE FULL SCREEN OVERLAY === */}
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? "open" : ""}`}>
+        {/* Close Button (Top Right) */}
+        <button
+          className="mobile-close-btn"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          <X size={20} />
+        </button>
+
+        <div className="mobile-menu-container">
+          {/* Search Bar matching the image */}
+          <div className="mobile-search-bar">
+            <input type="text" placeholder="Enter Keywords..." />
+            <button className="mobile-search-btn">
+              <Search size={18} />
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <ul className="mobile-nav-list">
+            {navLinks.map((link, index) => (
+              <li
+                key={link.path}
+                style={{ animationDelay: `${index * 0.1}s` }} // Staggered animation
               >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+                <div className="mobile-link-wrapper">
+                  <Link
+                    to={link.path}
+                    className={location.pathname === link.path ? "active" : ""}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                  {/* Visual chevron to match the design implies dropdowns */}
+                  <ChevronDown className="mobile-chevron" size={16} />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </header>
+    </>
   );
 };
 
