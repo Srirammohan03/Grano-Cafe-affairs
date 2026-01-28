@@ -2,131 +2,259 @@
    SECTION COMPONENT STYLES
    ======================================== */
 
-/* About Section */
+/* ================================
+   About Section
+   ================================ */
+
 .about-section {
-  background-color: var(--cream);
   position: relative;
+  overflow: hidden;
+}
+
+/* Background image support */
+.about-section-with-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Optional overlay (keep disabled if you want pure bg image) */
+.about-section-overlay {
+  position: absolute;
+  inset: 0;
+  /* background: rgba(248, 244, 239, 0.92); */
+  pointer-events: none;
+}
+
+/* Make sure content sits above overlay */
+.about-section-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr 0.8fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1.15fr 0.85fr;
+  gap: 44px;
   align-items: start;
 }
 
+/* LEFT IMAGE */
 .about-image {
   position: relative;
+  z-index: 2; /* keep image above */
 }
 
 .about-image img {
   width: 100%;
-  border-radius: var(--radius-medium);
+  height: 520px;
+  object-fit: cover;
+  border-radius: 18px;
   box-shadow: var(--shadow-card);
 }
 
+/* ================================
+   ✅ TEXT BOX FIX (CARD + DOWN + NO OVERLAP)
+   ================================ */
+
 .about-content {
-  padding-right: 20px;
+  /* move the text card slightly down vs the image */
+  margin-top: 34px;
+  margin-left: -70px;
+
+  /* card style */
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+  padding: 34px 34px 30px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.10);
+
+  /* IMPORTANT: prevents any overlap issues caused by transforms/animations */
+  position: relative;
+  z-index: 4;
+  overflow: hidden;
+}
+
+.about-subheading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+}
+
+.about-subheading::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--primary);
+  opacity: 0.75;
 }
 
 .about-content h2 {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
+  font-size: clamp(1.8rem, 2.2vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .about-content p {
   color: var(--text-light);
   margin-bottom: 16px;
-  line-height: 1.8;
+  line-height: 1.9;
+  font-size: 0.98rem;
+  max-width: 52ch;
 }
 
-.about-content .btn {
-  margin-top: 16px;
+.about-cta {
+  margin-top: 18px;
+  padding: 14px 26px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
 }
 
-/* Hours Card */
-.hours-card {
-  background-color: var(--secondary);
-  color: var(--white);
-  border-radius: var(--radius-medium);
-  padding: 32px;
+/* ================================
+   Hours Card
+   ================================ */
+
+.hours-wrap {
   position: relative;
-  overflow: hidden;
+  padding-top: 6px;
 }
 
-.hours-card::before {
+.hours-wrap::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background-color: var(--primary);
+  inset: -1px -1px -1px -1px;
+  height: calc(100% + 6px);
+  background: var(--primary);
+  border-radius: 26px;
+  z-index: 0;
+}
+
+.hours-card {
+  position: relative;
+  z-index: 1;
+  background: #2c2622;
+  color: var(--white);
+  border-radius: 18px;
+  padding: 34px 60px;
+  margin: 15px -36px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
 }
 
 .hours-title {
   color: var(--primary);
-  font-size: 1.25rem;
-  margin-bottom: 24px;
+  font-size: 1.3rem;
+  margin-bottom: 22px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
+  font-weight: 800;
 }
 
 .hours-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .hours-item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
+  gap: 14px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .hours-item:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 .hours-day {
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
 }
 
 .hours-time {
   color: var(--accent);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
 }
 
 .hours-closed {
   color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
+
+/* ================================
+   Responsive
+   ================================ */
 
 @media (max-width: 1100px) {
   .about-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 34px;
   }
 
-  .hours-card {
-    grid-column: span 2;
-    max-width: 400px;
-    margin: 0 auto;
+  .about-image img {
+    height: 460px;
+  }
+
+  /* keep a smaller drop on tablet */
+  .about-content {
+    margin-top: 18px;
+  }
+
+  .hours-wrap {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    margin: 10px auto 0;
+  }
+
+  .hours-wrap::before {
+    inset: -16px -16px auto -16px;
   }
 }
 
 @media (max-width: 768px) {
   .about-grid {
     grid-template-columns: 1fr;
+    gap: 26px;
   }
 
-  .hours-card {
-    grid-column: span 1;
+  .about-image img {
+    height: 360px;
+  }
+
+  /* when stacked, remove extra top gap */
+  .about-content {
+    margin-top: 0;
+    padding: 28px 22px;
+  }
+
+  .about-content p {
+    max-width: 100%;
+  }
+
+  .hours-wrap {
     max-width: 100%;
   }
 }
+
+
 
 /* Category Cards Section */
 .category-section {
