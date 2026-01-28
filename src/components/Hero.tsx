@@ -14,8 +14,8 @@ interface HeroProps {
 
 const Hero = ({
   title = 'OUR PASSION IS IN OUR COFFEE',
-  subtitle = '- Welcome to Basilico Coffee Shop -',
-  description = 'Basilico Coffee is the perfect spot in Sydney to celebrate a special occasion or to simply head out for a bite to eat.',
+  subtitle = '- Welcome to GRANO Coffee Shop -',
+  description = 'GRANO Coffee is the perfect spot in Sydney to celebrate a special occasion or to simply head out for a bite to eat.',
   showButtons = true,
   isPageHero = false,
   backgroundImage,
@@ -68,8 +68,8 @@ const Hero = ({
         
         {showButtons && (
           <div className="hero-buttons">
-            <Link to="/menu" className="btn btn-primary">View All Menu</Link>
-            <Link to="/contact" className="btn btn-outline">Book A Table</Link>
+            <Link to="/menu" className="btn btn-primary" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>View All Menu</Link>
+            <Link to="/contact" className="btn btn-outline" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Book A Table</Link>
           </div>
         )}
       </div>

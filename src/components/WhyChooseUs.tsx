@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Coffee, Smile, Play, CheckCircle } from 'lucide-react';
 import whyImage from '../assets/why-choose-us.jpg';
 import '../styles/sections.css';
 
@@ -58,46 +59,49 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section section-dark why-section paper-cut-top paper-cut-bottom paper-cut-dark-top paper-cut-dark-bottom">
+    <section ref={sectionRef} className="section section-dark why-section-new paper-cut-top paper-cut-bottom paper-cut-dark-top paper-cut-dark-bottom">
       <div className="container">
-        <div className="why-grid">
-          {/* Content */}
-          <div className={`why-content fade-in-left ${isVisible ? 'visible' : ''}`}>
+        <div className="why-grid-new">
+          {/* Content - Left */}
+          <div className={`why-content-new fade-in-left ${isVisible ? 'visible' : ''}`}>
             <span className="subheading" style={{ color: '#C5A480' }}>Why Choose Us</span>
             <h2>WE WANT YOU TO ENJOY THEIR COFFEE TO THE FULLEST</h2>
             <p>
-              Vertical is a family owned and operated coffee shop which provides a small town
+              GRANO is a family owned and operated coffee shop which provides a small town
               experience with big city appeal. It's warm and friendly environment provides an
               excellent atmosphere to enjoy a great cup of coffee or sandwich, hang with friends.
             </p>
-            <div className="why-features">
+            <div className="why-features-new">
               {features.map((feature, index) => (
-                <div key={index} className="why-feature">
-                  <span className="why-feature-icon">✓</span>
+                <div key={index} className="why-feature-new">
+                  <CheckCircle size={18} className="why-feature-icon-new" />
                   <span>{feature}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Visual */}
-          <div className={`why-visual fade-in-right ${isVisible ? 'visible' : ''}`}>
-            {/* Stats Card */}
-            <div className="stats-card">
-              <div className="stats-icon">☕</div>
-              <div className="stats-number">{coffeeCount}+</div>
-              <div className="stats-label">Cup Coffee Every Day</div>
-              <div className="stats-divider"></div>
-              <div className="stats-icon">😊</div>
-              <div className="stats-number">{satisfactionCount}%</div>
-              <div className="stats-label">Customer Satisfaction</div>
+          {/* Stats Card - Center */}
+          <div className={`stats-card-new fade-in ${isVisible ? 'visible' : ''}`}>
+            <div className="stat-item">
+              <Coffee size={32} className="stat-icon" />
+              <div className="stat-number">{coffeeCount}+</div>
+              <div className="stat-label">Cup Coffee Every Day</div>
             </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <Smile size={32} className="stat-icon" />
+              <div className="stat-number">{satisfactionCount}%</div>
+              <div className="stat-label">Customer Satisfaction</div>
+            </div>
+          </div>
 
-            {/* Image */}
-            <div className="why-image">
-              <img src={whyImage} alt="Enjoying coffee" loading="lazy" />
-              <div className="play-button" aria-label="Play video"></div>
-            </div>
+          {/* Image - Right */}
+          <div className={`why-image-new fade-in-right ${isVisible ? 'visible' : ''}`}>
+            <img src={whyImage} alt="Enjoying coffee" loading="lazy" />
+            <button className="play-button-new" aria-label="Play video">
+              <Play size={28} fill="currentColor" />
+            </button>
           </div>
         </div>
       </div>

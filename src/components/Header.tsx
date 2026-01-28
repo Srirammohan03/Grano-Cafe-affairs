@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import logo from '../assets/logo.png';
 import '../styles/header.css';
 
@@ -19,6 +20,8 @@ const Header = () => {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    // Scroll to top on route change
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location]);
 
   const navLinks = [
@@ -28,6 +31,10 @@ const Header = () => {
     { path: '/events', label: 'Events' },
     { path: '/contact', label: 'Contact' },
   ];
+
+  const handleNavClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
@@ -63,18 +70,17 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <span></span>
-              <span></span>
-              <span></span>
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
             {/* Navigation Links - Left */}
-            <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
+            <ul className={`nav-links nav-links-left ${isMobileMenuOpen ? 'active' : ''}`}>
               {navLinks.slice(0, 2).map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
                     className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                    onClick={handleNavClick}
                   >
                     {link.label}
                   </Link>
@@ -83,17 +89,19 @@ const Header = () => {
             </ul>
 
             {/* Center Logo */}
-            <Link to="/" className="nav-logo">
-              <img src={logo} alt="Basilico Coffee" loading="eager" />
+            <Link to="/" className="nav-logo" onClick={handleNavClick}>
+              <img src={logo} alt="GRANO Coffee" loading="eager" />
+              <span className="logo-text">GRANO</span>
             </Link>
 
             {/* Navigation Links - Right */}
-            <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
+            <ul className={`nav-links nav-links-right ${isMobileMenuOpen ? 'active' : ''}`}>
               {navLinks.slice(2).map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
                     className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                    onClick={handleNavClick}
                   >
                     {link.label}
                   </Link>
@@ -103,14 +111,36 @@ const Header = () => {
 
             {/* Nav Actions */}
             <div className="nav-actions">
-              <span className="nav-icon">🔍</span>
-              <span className="nav-icon cart-icon">
-                🛒
+              <button className="nav-action-btn" aria-label="Search">
+                <Search size={20} />
+              </button>
+              <button className="nav-action-btn cart-btn" aria-label="Cart">
+                <ShoppingBag size={20} />
                 <span className="cart-badge">0</span>
-              </span>
+              </button>
             </div>
           </div>
         </nav>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}>
+        <ul className="mobile-nav-links">
+          {navLinks.map((link) => (
+            <li key={link.path}>
+              <Link
+                to={link.path}
+                className={`mobile-nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  handleNavClick();
+                }}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   );

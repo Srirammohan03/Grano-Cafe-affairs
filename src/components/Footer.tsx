@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { Facebook, Twitter, Instagram, Send } from 'lucide-react';
 import logo from '../assets/logo.png';
 import '../styles/footer.css';
 
@@ -16,6 +17,10 @@ const Footer = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-paper-cut"></div>
@@ -25,17 +30,23 @@ const Footer = () => {
             {/* Brand */}
             <div className="footer-brand">
               <div className="footer-logo">
-                <img src={logo} alt="Basilico Coffee" />
+                <img src={logo} alt="GRANO Coffee" />
+                <span className="footer-logo-text">GRANO</span>
               </div>
               <p>
-                Welcome to our Basilico Coffee House. Lorem simply text amet cing
-                elit aenean feugiat. ut hendrerit mi pulvinar vel.
+                Welcome to GRANO Coffee House. We serve the finest artisan coffee 
+                crafted with passion and dedication to quality.
               </p>
               <div className="footer-social">
-                <a href="#" className="social-icon" aria-label="Facebook">f</a>
-                <a href="#" className="social-icon" aria-label="Twitter">𝕏</a>
-                <a href="#" className="social-icon" aria-label="Instagram">📷</a>
-                <a href="#" className="social-icon" aria-label="Pinterest">📌</a>
+                <a href="#" className="social-icon" aria-label="Facebook">
+                  <Facebook size={18} />
+                </a>
+                <a href="#" className="social-icon" aria-label="Twitter">
+                  <Twitter size={18} />
+                </a>
+                <a href="#" className="social-icon" aria-label="Instagram">
+                  <Instagram size={18} />
+                </a>
               </div>
             </div>
 
@@ -52,7 +63,7 @@ const Footer = () => {
               <div className="footer-contact-item">
                 <p className="footer-contact-label">Book A Table:</p>
                 <p className="footer-contact-value">
-                  <a href="mailto:basilicofood123@gmail.com">basilicofood123@gmail.com</a>
+                  <a href="mailto:hello@granocoffee.com">hello@granocoffee.com</a>
                 </p>
                 <p className="footer-contact-value">
                   <a href="tel:7346651852">(734) 665-1852</a>
@@ -102,7 +113,7 @@ const Footer = () => {
                     required
                   />
                   <button type="submit" className="newsletter-btn" aria-label="Subscribe">
-                    ➤
+                    <Send size={18} />
                   </button>
                 </div>
                 <label className="newsletter-checkbox">
@@ -120,12 +131,14 @@ const Footer = () => {
 
           {/* Bottom */}
           <div className="footer-bottom">
-            <span className="footer-coffee-icon">☕</span>
+            <button className="footer-coffee-icon" onClick={scrollToTop} aria-label="Scroll to top">
+              ☕
+            </button>
           </div>
           <p className="footer-copyright">
-            © 2024 Basilico Coffee. All Rights Reserved. | 
-            <Link to="/"> Privacy Policy</Link> | 
-            <Link to="/"> Terms of Service</Link>
+            © 2024 GRANO Coffee. All Rights Reserved. | 
+            <Link to="/" onClick={scrollToTop}> Privacy Policy</Link> | 
+            <Link to="/" onClick={scrollToTop}> Terms of Service</Link>
           </p>
         </div>
       </div>
