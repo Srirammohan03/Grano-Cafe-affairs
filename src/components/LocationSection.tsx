@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import locationImage from '../assets/location-image.jpg';
+import locationImage from '../assets/location.png';
 import '../styles/sections.css';
 
 const LocationSection = () => {

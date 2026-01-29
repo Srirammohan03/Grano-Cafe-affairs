@@ -59,7 +59,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section section-dark why-section-new paper-cut-top paper-cut-bottom paper-cut-dark-top paper-cut-dark-bottom">
+    <section ref={sectionRef} className="section  why-section-new ">
       <div className="container">
         <div className="why-grid-new">
           {/* Content - Left */}

@@ -1,8 +1,16 @@
+// src/components/CategorySection.tsx
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import coffeeImage from '../assets/category-coffee.jpg';
 import bakeryImage from '../assets/category-bakery.jpg';
 import breakfastImage from '../assets/category-breakfast.jpg';
+
+// ✅ icon images
+import coffeeIcon from '../assets/icons/Cappuccino.webp';
+import bakeryIcon from '../assets/icons/bakery-grano.png';
+import breakfastIcon from '../assets/icons/breakfast.png';
+
 import '../styles/sections.css';
 
 interface Category {
@@ -10,7 +18,7 @@ interface Category {
   title: string;
   description: string;
   image: string;
-  icon: string;
+  icon: string; // now this is image path
 }
 
 const CategorySection = () => {
@@ -38,23 +46,26 @@ const CategorySection = () => {
     {
       id: 'coffee',
       title: 'Coffee',
-      description: 'Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetendis in mei an pericula. Eos ei nisl graecis, vix aperiri.',
+      description:
+        'Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetendis in mei an pericula.',
       image: coffeeImage,
-      icon: '☕',
+      icon: coffeeIcon,
     },
     {
       id: 'bakery',
       title: 'Bakery',
-      description: 'Fresh baked goods made daily with premium ingredients. From croissants to artisan bread, we have it all.',
+      description:
+        'Fresh baked goods made daily with premium ingredients. From croissants to artisan bread.',
       image: bakeryImage,
-      icon: '🥐',
+      icon: bakeryIcon,
     },
     {
       id: 'breakfast',
       title: 'Breakfast',
-      description: 'Start your day right with our delicious breakfast options. From eggs to pancakes, freshly prepared.',
+      description:
+        'Start your day right with our delicious breakfast options. From eggs to pancakes.',
       image: breakfastImage,
-      icon: '🍳',
+      icon: breakfastIcon,
     },
   ];
 
@@ -72,11 +83,21 @@ const CategorySection = () => {
               <div className="category-card-bg">
                 <img src={category.image} alt={category.title} loading="lazy" />
               </div>
+
               <div className="category-card-overlay"></div>
+
               <div className="category-card-content">
-                <span className="category-icon">{category.icon}</span>
+                {/* ✅ ICON IMAGE */}
+                <img
+                  src={category.icon}
+                  alt={`${category.title} icon`}
+                  className="category-icon"
+                />
+
                 <h3 className="category-title">- {category.title} -</h3>
-                <p className="category-description">{category.description}</p>
+                <p className="category-description">
+                  {category.description}
+                </p>
               </div>
             </Link>
           ))}

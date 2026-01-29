@@ -23,7 +23,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-paper-cut"></div>
+      {/* <div className="footer-paper-cut"></div> */}
       <div className="container">
         <div className="footer-content">
           <div className="footer-grid">
@@ -131,14 +131,14 @@ const Footer = () => {
 
           {/* Bottom */}
           <div className="footer-bottom">
-            <button className="footer-coffee-icon" onClick={scrollToTop} aria-label="Scroll to top">
+            {/* <button className="footer-coffee-icon" onClick={scrollToTop} aria-label="Scroll to top">
               ☕
-            </button>
+            </button> */}
           </div>
           <p className="footer-copyright">
-            © 2024 GRANO Coffee. All Rights Reserved. | 
-            <Link to="/" onClick={scrollToTop}> Privacy Policy</Link> | 
-            <Link to="/" onClick={scrollToTop}> Terms of Service</Link>
+            © 2026 GRANO Coffee. All Rights Reserved. | Powered By Outright Creators
+            {/* <Link to="/" onClick={scrollToTop}> Privacy Policy</Link> | 
+            <Link to="/" onClick={scrollToTop}> Terms of Service</Link> */}
           </p>
         </div>
       </div>

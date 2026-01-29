@@ -34,7 +34,7 @@ const Home = () => {
         <EventsSection />
         <TestimonialsSection />
         <LocationSection />
-        <CTASection />
+        {/* <CTASection /> */}
       </main>
       <Footer />
       <BackToTop />

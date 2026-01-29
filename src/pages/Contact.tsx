@@ -4,7 +4,7 @@ import Hero from '../components/Hero';
 import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
-import locationImage from '../assets/location-image.jpg';
+import locationImage from '../assets/why-choose-us.jpg';
 import '../styles/pages.css';
 
 interface ContactFormData {

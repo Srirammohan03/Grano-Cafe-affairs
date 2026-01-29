@@ -18,17 +18,12 @@ const EventsSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -36,17 +31,20 @@ const EventsSection = () => {
     {
       id: 'private',
       title: 'Private Coffee Room',
-      content: 'Donec aliquet, erat non tempor hendrerit, est augue viverra augue, non dignissim metus urna eget ante. Fusce fermentum mauris nec.',
+      content:
+        'Donec aliquet, erat non tempor hendrerit, est augue viverra augue, non dignissim metus urna eget ante.',
     },
     {
       id: 'birthday',
       title: 'Birthday Party',
-      content: 'Celebrate your special day with us! We offer customized birthday packages with decorations, cake, and special treats.',
+      content:
+        'Celebrate your special day with us! We offer customized birthday packages with decorations.',
     },
     {
       id: 'meeting',
       title: 'Working & Meeting',
-      content: 'Perfect for business meetings and remote work. High-speed wifi, quiet atmosphere, and excellent coffee to keep you productive.',
+      content:
+        'Perfect for business meetings and remote work. High-speed wifi and excellent coffee.',
     },
   ];
 
@@ -58,12 +56,13 @@ const EventsSection = () => {
     <section ref={sectionRef} className="section events-section">
       <div className="container">
         <div className="events-grid">
-          {/* Images */}
-          <div className={`events-images fade-in-left ${isVisible ? 'visible' : ''}`}>
-            <div className="events-image image-zoom">
+          {/* ✅ Collage Images */}
+          <div className={`events-collage fade-in-left ${isVisible ? 'visible' : ''}`}>
+            <div className="collage-img collage-main image-zoom">
               <img src={eventsOutdoor} alt="Outdoor event" loading="lazy" />
             </div>
-            <div className="events-image events-image-offset image-zoom">
+
+            <div className="collage-img collage-overlay image-zoom">
               <img src={eventsCoffee} alt="Coffee setting" loading="lazy" />
             </div>
           </div>
@@ -74,11 +73,9 @@ const EventsSection = () => {
             <h2>THE PERFECT VENUE FOR YOUR SPECIAL EVENT</h2>
             <p>
               Our cafe is the perfect venue for your special event, you can organize a light
-              birthday party, we will decorate it to your liking, or meet friends and relatives,
-              a partner, and the perfect place to work.
+              birthday party, meet friends, or work peacefully.
             </p>
 
-            {/* Accordion */}
             <div className="accordion">
               {accordionItems.map((item) => (
                 <div
@@ -99,7 +96,9 @@ const EventsSection = () => {
               ))}
             </div>
 
-            <Link to="/events" className="btn btn-primary">Schedule An Event</Link>
+            <Link to="/events" className="btn btn-primary">
+              Schedule An Event
+            </Link>
           </div>
         </div>
       </div>

@@ -49,9 +49,8 @@ const Header = () => {
   const navLinks = [
     { path: "/", label: "HOME" },
     { path: "/menu", label: "MENU" },
-    { path: "/reservation", label: "RESERVATION" },
-    { path: "/pages", label: "PAGES" },
-    { path: "/blog", label: "BLOG" },
+    { path: "/about", label: "ABOUT" },
+    { path: "/events", label: "EVENTS" },
     { path: "/contact", label: "CONTACT" },
   ];
 
@@ -140,7 +139,7 @@ const Header = () => {
                     ))}
                   </ul>
 
-                  <div className="nav-actions">
+                  {/* <div className="nav-actions">
                     <button
                       className="action-btn desktop-search"
                       aria-label="Search"
@@ -151,7 +150,7 @@ const Header = () => {
                       <ShoppingBag size={22} />
                       <span className="cart-badge">0</span>
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

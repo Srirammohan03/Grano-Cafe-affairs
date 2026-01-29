@@ -1,6 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/global.css';
+import './styles/fonts.css';
+
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -10,24 +12,24 @@ const Events = lazy(() => import('./pages/Events'));
 const Contact = lazy(() => import('./pages/Contact'));
 
 // Loading fallback
-const PageLoader = () => (
-  <div style={{
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FAF8F5',
-  }}>
-    <div style={{ textAlign: 'center' }}>
-      <div style={{ fontSize: '2rem', marginBottom: '16px' }}>☕</div>
-      <p style={{ color: '#C5A480', fontWeight: 500 }}>Loading...</p>
-    </div>
-  </div>
-);
+// const PageLoader = () => (
+//   <div style={{
+//     minHeight: '100vh',
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     backgroundColor: '#FAF8F5',
+//   }}>
+//     <div style={{ textAlign: 'center' }}>
+//       <div style={{ fontSize: '2rem', marginBottom: '16px' }}>☕</div>
+//       <p style={{ color: '#C5A480', fontWeight: 500 }}>Loading...</p>
+//     </div>
+//   </div>
+// );
 
 const App = () => (
   <BrowserRouter>
-    <Suspense fallback={<PageLoader />}>
+    <Suspense >
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
