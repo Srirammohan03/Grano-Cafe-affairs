@@ -12,7 +12,7 @@ const CTASection = ({
   title = 'Ready to Experience Great Coffee?',
   description = 'Visit us today and discover why we are the favorite coffee spot in town.',
   buttonText = 'Book A Table',
-  buttonLink = '/contact',
+  buttonLink = 'https://maps.app.goo.gl/tzzGL72wgsTWY3XF8',
 }: CTASectionProps) => {
   return (
     <section className="cta-section">

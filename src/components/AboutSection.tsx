@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import aboutImage from '../assets/about-barista.jpg';
+import aboutImage from '/images/aboutsec.png';
 
 // ✅ About section background image
 import aboutBg from '../assets/about-bg-1.jpg';
@@ -25,12 +25,12 @@ const AboutSection = () => {
   }, []);
 
   const hours = [
-    { day: 'Monday', time: '7:00 – 21:00' },
-    { day: 'Tuesday', time: '7:00 – 21:00' },
-    { day: 'Wednesday', time: '7:00 – 21:00' },
-    { day: 'Thursday', time: '7:00 – 21:00' },
-    { day: 'Friday', time: '8:00 – 21:00' },
-    { day: 'Saturday', time: '7:00 – 22:00' },
+    { day: 'Monday', time: '10:00 AM – 01:00 AM ' },
+    { day: 'Tuesday', time: '10:00 AM – 01:00 AM ' },
+    { day: 'Wednesday', time: '10:00 AM – 01:00 AM ' },
+    { day: 'Thursday', time: '10:00 AM – 01:00 AM ' },
+    { day: 'Friday', time: '10:00 AM – 01:00 AM ' },
+    { day: 'Saturday', time: '10:00 AM – 01:00 AM' },
     { day: 'Sunday', time: 'CLOSED', isClosed: true },
   ];
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import locationImage from '../assets/location.png';
+import locationImage from '/images/locationsec.jpg';
 import '../styles/sections.css';
 
 const LocationSection = () => {
@@ -40,17 +40,17 @@ const LocationSection = () => {
           
           <div className="location-detail">
             <p className="location-label">Call Us Book A Table & Delivery:</p>
-            <p className="location-phone">(734) 665-1852</p>
+            <p className="location-phone">+91 96769 64871</p>
           </div>
 
           <div className="location-detail">
             <p className="location-label">Information Coffee House:</p>
             <p className="location-address">
-              4517 Washington Ave. Manchester, Kentucky 39495, USA
+              D.8-2-293/82/A/ 1263/A, Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad
             </p>
-            <p className="location-email">basilicofood123@gmail.com</p>
+            <p className="location-email">granohyd@gmail.com</p>
             <p className="location-hours">
-              Mon – <span>Fri</span> : 9:00am – 22:00pm, Holidays : Close
+              Mon – <span>Sat</span> : 10:00 AM – 01:00 AM, Holidays : Closed
             </p>
           </div>
 
@@ -60,7 +60,7 @@ const LocationSection = () => {
         {/* Map */}
         <div className={`location-map fade-in-right ${isVisible ? 'visible' : ''}`}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.5419527813396!2d-0.1195680841619799!3d51.50330697963432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900d26973%3A0x4291f3172409ea92!2sLondon%20Eye!5e0!3m2!1sen!2suk!4v1625123456789!5m2!1sen!2suk"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6747675080314!2d78.41108467462783!3d17.42738890165261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91866f263499%3A0xb472ea500896e982!2sGrano%20-%20Coffee%20Affairs!5e0!3m2!1sen!2sin!4v1773048904051!5m2!1sen!2sin"
             title="Location Map"
             allowFullScreen
             loading="lazy"

@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Send } from 'lucide-react';
-import logo from '../assets/logo.png';
+import logo from '/images/creamlogograno.png';
 import '../styles/footer.css';
 
 const Footer = () => {
@@ -31,7 +31,6 @@ const Footer = () => {
             <div className="footer-brand">
               <div className="footer-logo">
                 <img src={logo} alt="GRANO Coffee" />
-                <span className="footer-logo-text">GRANO</span>
               </div>
               <p>
                 Welcome to GRANO Coffee House. We serve the finest artisan coffee 
@@ -56,17 +55,17 @@ const Footer = () => {
               <div className="footer-contact-item">
                 <p className="footer-contact-label">Location:</p>
                 <p className="footer-contact-value">
-                  4517 Washington Ave.<br />
-                  Manchester, Kentucky 39495, USA
+                  D.8-2-293/82/A/ 1263/A, Road 63A & 64, Circle 18,
+                   Jubilee Hills, Hyderabad
                 </p>
               </div>
               <div className="footer-contact-item">
                 <p className="footer-contact-label">Book A Table:</p>
                 <p className="footer-contact-value">
-                  <a href="mailto:hello@granocoffee.com">hello@granocoffee.com</a>
+                  <a href="mailto:granohyd@gmail.com">granohyd@gmail.com</a>
                 </p>
                 <p className="footer-contact-value">
-                  <a href="tel:7346651852">(734) 665-1852</a>
+                  <a href="tel:9676964871">+91 96769 64871</a>
                 </p>
               </div>
             </div>
@@ -75,25 +74,25 @@ const Footer = () => {
             <div className="footer-section">
               <h3>Hour Open</h3>
               <div className="footer-hours-item">
-                <span className="footer-hours-day">Monday – Friday:</span>
-                <span className="footer-hours-time">9:00am – 22:00pm</span>
+                <span className="footer-hours-day">Monday – Saturday:</span>
+                <span className="footer-hours-time">10:00 AM – 01:00 AM</span>
               </div>
-              <div className="footer-hours-item">
+              {/* <div className="footer-hours-item">
                 <span className="footer-hours-day">Saturday:</span>
-                <span className="footer-hours-time">10:00am – 23:00pm</span>
-              </div>
+                <span className="footer-hours-time">10:00 AM – 01:00 AM</span>
+              </div> */}
               <div className="footer-hours-item">
                 <span className="footer-hours-day">Sunday:</span>
-                <span className="footer-hours-time">5:00pm – 23:00pm</span>
+                <span className="footer-hours-time">Closed</span>
               </div>
               <div className="footer-hours-item">
                 <span className="footer-hours-day">Holidays:</span>
                 <span className="footer-hours-time">Closed</span>
               </div>
-              <div className="footer-hours-item">
+              {/* <div className="footer-hours-item">
                 <span className="footer-hours-day">Happy Hours:</span>
                 <span className="footer-hours-time">18:00pm – 20:00pm</span>
-              </div>
+              </div> */}
             </div>
 
             {/* Newsletter */}

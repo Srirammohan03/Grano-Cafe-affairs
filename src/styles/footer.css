@@ -77,10 +77,9 @@
 }
 
 .footer-logo img {
-  width: 70px;
+  width: 270px;
   height: 70px;
-  background-color: var(--white);
-  border-radius: 50%;
+  
   padding: 8px;
   object-fit: contain;
 }

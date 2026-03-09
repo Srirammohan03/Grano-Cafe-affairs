@@ -29,7 +29,7 @@ const Menu = () => {
           isPageHero={true}
           backgroundImage={heroImage}
         />
-        <MenuSection showTabs={true} onOrderClick={handleOrderClick} />
+        <MenuSection  onOrderClick={handleOrderClick} />
         <CTASection
           title="Can't Decide? Visit Us!"
           description="Our friendly baristas will help you find the perfect drink."

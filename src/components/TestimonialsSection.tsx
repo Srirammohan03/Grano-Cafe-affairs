@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import testimonialsBg from '../assets/BG-h1.jpg';
+import testimonialsBg from '/images/testi.jpg';
 import quoteCup from '../assets/coffee-cup-quote.png';
 import '../styles/sections.css';
 
@@ -15,20 +15,28 @@ const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials: Testimonial[] = [
-    {
+        {
       id: 1,
-      text: `Great atmosphere, excellent drinks (I tried two of them and plan to work through the menu) and friendly staff – a combination for success! Add the commitment to serve and this is a venture I can endorse without reservation. May God honor and bless your step of faith.`,
-      author: 'Shane Jennifer',
+      text: `The ambience is nice, both indoor and outdoor seating space is there. I liked hot chocolate. Farm fresh pizza in veg was good. I would recommend to try pasta.`,
+      author: 'Aakanksha Jain',
     },
     {
+      
       id: 2,
-      text: `The best coffee shop in town! The ambiance is perfect for both work and relaxation. Their cappuccino is absolutely divine.`,
-      author: 'Michael Roberts',
+      text: `Grano Café delivers a really satisfying dining experience from start to finish. The starters were fresh and full of flavor, setting the tone for what was to come—well-seasoned, nicely presented, and clearly made with quality ingredients.
+The main courses were the highlight of the meal. Each dish was hearty, comforting, and thoughtfully prepared, with generous portions and rich flavors that felt both indulgent and well-balanced. You can tell care goes into the cooking, and everything tasted fresh and made to order.
+To finish, the desserts were the perfect ending—sweet without being overwhelming and beautifully presented. Light, creamy, and full of flavor, they left a great final impression.
+Overall, Grano Café is a great spot for anyone looking for delicious food, a cozy atmosphere, and a well-rounded menu. Definitely worth visiting again.`,
+      author: 'Mohammed Akmal',
     },
+
     {
       id: 3,
-      text: `I’ve been coming here for years and the quality never disappoints. The pastries are freshly baked every morning.`,
-      author: 'Emily Watson',
+      text: `Grano feels like one of those places you accidentally discover and then want to keep returning to. The space is calm, green, and thoughtfully designed — perfect for slow conversations, quiet work, or an unhurried meal.
+The food really stands out. The dish I tried was beautifully balanced — fresh, clean flavours, well-textured, and plated with care. You can tell there’s attention to ingredients and restraint rather than overdoing things. Nothing felt heavy; everything felt intentional.
+What I appreciated most was the overall experience. It’s not just about coffee or food — it’s about slowing down for a bit. The ambience, the lighting, and the pacing make you want to stay longer than planned.
+A great spot for brunch, solo time, or a low-key date. Definitely one of the nicer cafés in Jubilee Hills if you enjoy calm spaces and thoughtfully made food. ⭐⭐⭐⭐⭐`,
+      author: 'Khash',
     },
   ];
 

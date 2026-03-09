@@ -158,27 +158,26 @@
   }
   
   .logo-circle {
-    width: 90px;
-    height: 90px;
-    background: white;
-    border-radius: 50%;
+    width: 250px;
+    height: 50px;
+
     padding: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
     transition: all 0.4s ease;
-    margin-top: 25px;
+    /* margin-top: 25px; */
   }
   
   .logo-circle img {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+    /* border-radius: 50%; */
+    object-fit: contain;
   }
   
   .header.scrolled .logo-circle {
-    width: 70px;
+    width: 200px;
     height: 70px; /* Shrink logo on scroll */
-    margin-top: 25px;
+   
   }
   
   /* ── ACTIONS (Right Side) ── */

@@ -77,6 +77,7 @@
 .about-subheading {
   display: inline-flex;
   align-items: center;
+  font-family: 'Dancing Script', cursive;
   gap: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -973,7 +974,7 @@
 .testimonials-overlay {
   position: absolute;
   inset: 0;
-  /* background: rgba(23, 20, 18, 0.82); */
+  background: rgba(23, 20, 18, 0.82);
   z-index: 0;
 }
 

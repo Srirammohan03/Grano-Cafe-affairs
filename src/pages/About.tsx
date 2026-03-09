@@ -50,7 +50,7 @@ const About = () => {
                 <span className="subheading">Our Story</span>
                 <h2>FROM BEAN TO CUP, WITH LOVE</h2>
                 <p>
-                  Founded in 2003, Basilico Coffee started as a small family-owned
+                  Founded in 2003, Grano Coffee started as a small family-owned
                   coffee shop with a simple mission: to serve the best coffee in town
                   while creating a warm, welcoming space for our community.
                 </p>

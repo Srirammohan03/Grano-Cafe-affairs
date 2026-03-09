@@ -9,7 +9,7 @@ import {
   MapPin,
   ChevronDown,
 } from "lucide-react";
-import logo from "../assets/logo.png"; // Ensure this path is correct
+import logo from "/images/creamlogograno.png"; // Ensure this path is correct
 import "../styles/header.css";
 
 const Header = () => {
@@ -68,14 +68,14 @@ const Header = () => {
                 <div className="top-bar-text">
                   <span className="top-bar-label">LOCATION</span>
                   <span className="top-bar-value">
-                    448 West Foxrun St. Bronx, NY 10472
+                    D.8-2-293/82/A/ 1263/A, Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad
                   </span>
                 </div>
               </div>
               <div className="top-bar-item">
                 <div className="top-bar-text right-align">
                   <span className="top-bar-label">CALL DELIVERY</span>
-                  <span className="top-bar-value">(734) 665-1852</span>
+                  <span className="top-bar-value">+91 96769 64871</span>
                 </div>
                 <div className="top-bar-icon">
                   <Phone size={16} fill="currentColor" />
@@ -118,7 +118,7 @@ const Header = () => {
                 {/* Center Logo */}
                 <Link to="/" className="nav-logo">
                   <div className="logo-circle">
-                    <img src={logo} alt="Basilico Cafe" />
+                    <img src={logo} alt="Grano Cafe" />
                   </div>
                 </Link>
 
@@ -171,12 +171,12 @@ const Header = () => {
 
         <div className="mobile-menu-container">
           {/* Search Bar matching the image */}
-          <div className="mobile-search-bar">
+          {/* <div className="mobile-search-bar">
             <input type="text" placeholder="Enter Keywords..." />
             <button className="mobile-search-btn">
               <Search size={18} />
             </button>
-          </div>
+          </div> */}
 
           {/* Navigation Links */}
           <ul className="mobile-nav-list">

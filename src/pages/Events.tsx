@@ -87,7 +87,7 @@ const Events = () => {
               <h2>THE PERFECT VENUE FOR YOUR OCCASION</h2>
               <p>
                 Whether you're planning a birthday celebration, a corporate meeting, or a casual
-                get-together with friends, Basilico Coffee offers the ideal setting. Our warm
+                get-together with friends, Grano Coffee offers the ideal setting. Our warm
                 ambiance, exceptional coffee, and dedicated staff ensure your event is memorable.
               </p>
               <p style={{ marginTop: '16px' }}>
@@ -103,7 +103,7 @@ const Events = () => {
           <div className="container">
             <div className="text-center mb-5">
               <span className="subheading" style={{ justifyContent: 'center' }}>Sample Event Schedule</span>
-              <h2>A DAY AT BASILICO</h2>
+              <h2>A DAY AT Grano</h2>
             </div>
 
             <div className="timeline">
