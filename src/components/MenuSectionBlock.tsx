@@ -10,6 +10,7 @@ type Props = {
   items: NewMenuItem[];
   onAdd?: (item: NewMenuItem) => void;
   cta?: React.ReactNode;
+  showImage?: boolean;
 };
 
 function MenuColumn({
@@ -57,6 +58,7 @@ export default function MenuSectionBlock({
   items,
   onAdd,
   cta,
+  showImage = true,
 }: Props) {
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -86,13 +88,18 @@ export default function MenuSectionBlock({
   }, [items]);
 
   return (
-    <section ref={sectionRef} className="msb-wrap">
+   <section
+  ref={sectionRef}
+  className={`msb-wrap ${!showImage ? "msb-noImage" : ""}`}
+>
       <div className={`msb-block ${reverse ? "msb-reverse" : ""}`}>
-        <div className="msb-media">
-          <div className="msb-plate">
-            <img src={imageSrc} alt={title} className="msb-img" />
-          </div>
-        </div>
+       {showImage && (
+  <div className="msb-media">
+    <div className="msb-plate">
+      <img src={imageSrc} alt={title} className="msb-img" />
+    </div>
+  </div>
+)}
 
         <div className="msb-content">
           {kicker && <div className="msb-kicker">{kicker}</div>}

@@ -33,8 +33,8 @@ const App = () => (
     <Suspense >
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/new-menu" element={<NewMenu />} />
+        <Route path="/new-menu" element={<Menu />} />
+        <Route path="/menu" element={<NewMenu />} />
         <Route path="/about" element={<About />} />
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />

@@ -102,6 +102,7 @@ export default function NewMenu() {
                 reverse={b.reverse}
                 items={b.items}
                 onAdd={handleOrderClick}
+                showImage={false}
               />
             ))}
           </div>
