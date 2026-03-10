@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
           {/* Content - Left */}
           <div className={`why-content-new fade-in-left ${isVisible ? 'visible' : ''}`}>
             <span className="subheading" style={{ color: '#C5A480' }}>Why Choose Us</span>
-            <h2>WE WANT YOU TO ENJOY THEIR COFFEE TO THE FULLEST</h2>
+            <h2>We Want You to Enjoy Their Coffee to the Fullest</h2>
             <p>
               GRANO is a family owned and operated coffee shop which provides a small town
               experience with big city appeal. It's warm and friendly environment provides an

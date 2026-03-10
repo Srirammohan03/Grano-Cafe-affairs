@@ -1,6 +1,20 @@
 /* ========================================
    VARIABLES
    ======================================== */
+   @font-face {
+    font-family: 'Svemir';
+    src: url('Svemir.eot');
+    src: local('Svemir'),
+        url('Svemir.eot?#iefix') format('embedded-opentype'),
+        url('/font/Svemir.woff2') format('woff2'),
+        url('/font/Svemir.woff') format('woff'),
+        url('/font/Svemir.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
    :root {
     --primary: #c89f5e;       /* Gold/Beige */
     --primary-hover: #b08d55;
@@ -8,7 +22,7 @@
     --dark-overlay: #2b2722;  /* The specific brown from the mobile menu image */
     --white: #f5f0e9;
     --gray: #aaa;
-    --font-heading: 'Oswald', sans-serif; /* Recommended font for this style */
+    --font-heading: 'Svemir', sans-serif; /* Recommended font for this style */
     --font-body: 'Cerebri Sans Pro', sans-serif;
   }
   

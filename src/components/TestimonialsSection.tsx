@@ -73,7 +73,7 @@ A great spot for brunch, solo time, or a low-key date. Definitely one of the nic
             Customer Testimonials
           </span>
 
-          <h2 className="testimonials-title">WHAT CUSTOMERS SAY?</h2>
+          <h2 className="testimonials-title">What Customers Say?</h2>
 
           <p className="testimonial-text">
             “ {testimonials[currentIndex].text} ”

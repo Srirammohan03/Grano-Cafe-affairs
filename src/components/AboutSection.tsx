@@ -53,7 +53,7 @@ const AboutSection = () => {
           <div className={`about-content fade-in ${isVisible ? 'visible' : ''}`}>
             <span className="subheading about-subheading">Coffee Shop Since 2003</span>
 
-            <h2>WE ARE NOT YOUR AVERAGE COFFEE SHOP</h2>
+            <h2>We Are Not Your Average Coffee Shop</h2>
 
             <p>
               We offer some of the best locally roasted coffee using "Brazilian Santos" beans.

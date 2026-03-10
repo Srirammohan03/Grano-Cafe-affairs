@@ -7,6 +7,7 @@ import './styles/fonts.css';
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
 const Menu = lazy(() => import('./pages/Menu'));
+const NewMenu = lazy(() => import('./pages/newMenu'));
 const About = lazy(() => import('./pages/About'));
 const Events = lazy(() => import('./pages/Events'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -33,6 +34,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/new-menu" element={<NewMenu />} />
         <Route path="/about" element={<About />} />
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />

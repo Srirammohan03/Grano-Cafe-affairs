@@ -1,0 +1,28 @@
+
+
+.msc-wrap {
+  background: #ffffff;
+}
+
+/* button style same vibe as reference */
+.msc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: transparent;
+  color: #1c1c1c;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.msc-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+}

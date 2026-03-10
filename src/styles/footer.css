@@ -103,8 +103,8 @@
 .footer-section h3 {
   color: var(--primary);
   font-size: 1.125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  /* text-transform: uppercase;
+  letter-spacing: 0.1em; */
   margin-bottom: 24px;
   position: relative;
   padding-bottom: 16px;

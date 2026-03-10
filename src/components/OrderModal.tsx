@@ -1,11 +1,17 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { MenuItem } from './MenuSection';
 import '../styles/menu.css';
+import type { NewMenuItem } from "../types/menu";
 
+// interface OrderModalProps {
+//   isOpen: boolean;
+//   onClose: () => void;
+//   selectedItem: MenuItem | null;
+// }
 interface OrderModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedItem: MenuItem | null;
+  selectedItem: MenuItem | NewMenuItem | null;
 }
 
 interface FormData {

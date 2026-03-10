@@ -70,7 +70,7 @@ const EventsSection = () => {
           {/* Content */}
           <div className={`events-content fade-in-right ${isVisible ? 'visible' : ''}`}>
             <span className="subheading">Private Event</span>
-            <h2>THE PERFECT VENUE FOR YOUR SPECIAL EVENT</h2>
+            <h2>The Perfect Venue for Your Special Event</h2>
             <p>
               Our cafe is the perfect venue for your special event, you can organize a light
               birthday party, meet friends, or work peacefully.

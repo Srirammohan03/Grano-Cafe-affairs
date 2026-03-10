@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Svemir';
+    src: url('Svemir.eot');
+    src: local('Svemir'),
+        url('Svemir.eot?#iefix') format('embedded-opentype'),
+        url('Svemir.woff2') format('woff2'),
+        url('Svemir.woff') format('woff'),
+        url('Svemir.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

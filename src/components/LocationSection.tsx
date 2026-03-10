@@ -36,7 +36,7 @@ const LocationSection = () => {
         {/* Info */}
         <div className={`location-info fade-in ${isVisible ? 'visible' : ''}`}>
           <span className="subheading">Location</span>
-          <h2>HOW TO FIND US?</h2>
+          <h2>How to Find Us?</h2>
           
           <div className="location-detail">
             <p className="location-label">Call Us Book A Table & Delivery:</p>

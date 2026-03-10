@@ -1,0 +1,93 @@
+.mct-container {
+  width: 100%;
+}
+
+.mct-desktop {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mct-tab {
+  width: 100%;
+  height: 52px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #f3f3f3;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mct-tab.is-active {
+  background: #c49a5c;
+  color: white;
+}
+
+.mct-filterBtn {
+  display: none;
+  background: #c49a5c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* DRAWER */
+
+.mct-drawer {
+  position: fixed;
+  top: 0;
+  left: -80%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: white;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  transition: left .35s ease;
+  z-index: 99999;
+  overflow-y: auto;
+}
+
+.mct-drawer.open {
+  left: 0;
+}
+
+.mct-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 99990;
+}
+
+.mct-drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.mct-close {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .mct-filterBtn {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .mct-desktop {
+    display: none;
+  }
+
+}

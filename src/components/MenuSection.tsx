@@ -64,7 +64,7 @@ const MenuSection = ({ limit, onOrderClick }: MenuSectionProps) => {
 
         <div className={`menu-header fade-in ${isVisible ? "visible" : ""}`}>
           <span className="subheading">Explore Our Menu</span>
-          <h2>DELICIOUS MENU FOR YOU</h2>
+          <h2>Delicious Menu for You</h2>
 
           {/* Mobile Filter Button */}
           <button
