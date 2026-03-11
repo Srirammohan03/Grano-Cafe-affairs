@@ -33,8 +33,8 @@ const Footer = () => {
                 <img src={logo} alt="GRANO Coffee" />
               </div>
               <p>
-                Welcome to GRANO Coffee House. We serve the finest artisan coffee 
-                crafted with passion and dedication to quality.
+                Welcome to Cafe Grano, where every cup of coffee is crafted with passion. 
+                Enjoy a cozy space filled with great flavors, warm vibes, and unforgettable moments.
               </p>
               <div className="footer-social">
                 <a href="#" className="social-icon" aria-label="Facebook">
@@ -55,7 +55,7 @@ const Footer = () => {
               <div className="footer-contact-item">
                 <p className="footer-contact-label">Location:</p>
                 <p className="footer-contact-value">
-                  D.8-2-293/82/A/ 1263/A, Road 63A & 64, Circle 18,
+                  Road 63A & 64, Circle 18,<br />
                    Jubilee Hills, Hyderabad
                 </p>
               </div>
@@ -74,7 +74,7 @@ const Footer = () => {
             <div className="footer-section">
               <h3>Hour Open</h3>
               <div className="footer-hours-item">
-                <span className="footer-hours-day">Monday – Saturday:</span>
+                <span className="footer-hours-day">All Day</span>
                 <span className="footer-hours-time">10:00 AM – 01:00 AM</span>
               </div>
               {/* <div className="footer-hours-item">
@@ -83,11 +83,11 @@ const Footer = () => {
               </div> */}
               <div className="footer-hours-item">
                 <span className="footer-hours-day">Sunday:</span>
-                <span className="footer-hours-time">Closed</span>
+                <span className="footer-hours-time">Open</span>
               </div>
               <div className="footer-hours-item">
                 <span className="footer-hours-day">Holidays:</span>
-                <span className="footer-hours-time">Closed</span>
+                <span className="footer-hours-time">Open</span>
               </div>
               {/* <div className="footer-hours-item">
                 <span className="footer-hours-day">Happy Hours:</span>
@@ -135,7 +135,7 @@ const Footer = () => {
             </button> */}
           </div>
           <p className="footer-copyright">
-            © 2026 GRANO Coffee. All Rights Reserved. | Powered By Outright Creators
+            © 2026 Grano - Coffee Affairs. All Rights Reserved. | Powered By Outright Creators
             {/* <Link to="/" onClick={scrollToTop}> Privacy Policy</Link> | 
             <Link to="/" onClick={scrollToTop}> Terms of Service</Link> */}
           </p>

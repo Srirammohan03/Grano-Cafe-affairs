@@ -31,7 +31,7 @@ const WhyChooseUs = () => {
     if (!isVisible) return;
 
     const targetCoffee = 658;
-    const targetSatisfaction = 98;
+    const targetSatisfaction = 99;
     const duration = 2000;
     const steps = 60;
     const intervalTime = duration / steps;
@@ -53,9 +53,9 @@ const WhyChooseUs = () => {
   }, [isVisible]);
 
   const features = [
-    'Imported Coffee and Quality Control',
-    'Cozy Space to Enjoy and Relax',
-    "Make Sure the Coffee Taste Doesn't Change",
+    'Carefully Selected Imported Coffee Beans',
+    'Warm & Cozy Ambience',
+    "Consistent Flavor in Every Cup",
   ];
 
   return (
@@ -65,11 +65,13 @@ const WhyChooseUs = () => {
           {/* Content - Left */}
           <div className={`why-content-new fade-in-left ${isVisible ? 'visible' : ''}`}>
             <span className="subheading" style={{ color: '#C5A480' }}>Why Choose Us</span>
-            <h2>We Want You to Enjoy Their Coffee to the Fullest</h2>
+            <h2>Crafting Exceptional Coffee Experiences</h2>
             <p>
-              GRANO is a family owned and operated coffee shop which provides a small town
-              experience with big city appeal. It's warm and friendly environment provides an
-              excellent atmosphere to enjoy a great cup of coffee or sandwich, hang with friends.
+              Welcome to Cafe Grano, a vibrant coffee destination in Jubilee Hills, Hyderabad.
+  Previously known as Laffaire Cafe, we bring together carefully selected coffee
+  beans, flavorful dishes, and a warm, cozy ambiance. From signature coffee blends
+  to delicious bites, every visit is designed to give you a memorable experience
+  with great taste and great company.
             </p>
             <div className="why-features-new">
               {features.map((feature, index) => (

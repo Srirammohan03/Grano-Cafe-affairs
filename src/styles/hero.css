@@ -185,7 +185,7 @@
   }
 
   .hero-content {
-    margin-top: 60px;
+    margin-top: 60px !important;
   }
 
   .hero-buttons {

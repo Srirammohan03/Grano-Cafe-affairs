@@ -94,16 +94,16 @@ export default function NewMenu() {
 
           <div className="menuContent">
             {blocks.map((b) => (
-              <MenuSectionBlock
-                key={b.key}
-                kicker={b.kicker}
-                title={b.title}
-                imageSrc={heroImage}
-                reverse={b.reverse}
-                items={b.items}
-                onAdd={handleOrderClick}
-                showImage={false}
-              />
+           <MenuSectionBlock
+  key={b.key}
+  kicker={b.kicker}
+  title={b.title}
+  imageSrc={heroImage}
+  reverse={b.reverse}
+  items={b.items}
+  showImage={false}
+  showTitle={true}
+/>  
             ))}
           </div>
         </div>

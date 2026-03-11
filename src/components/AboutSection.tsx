@@ -31,7 +31,7 @@ const AboutSection = () => {
     { day: 'Thursday', time: '10:00 AM – 01:00 AM ' },
     { day: 'Friday', time: '10:00 AM – 01:00 AM ' },
     { day: 'Saturday', time: '10:00 AM – 01:00 AM' },
-    { day: 'Sunday', time: 'CLOSED', isClosed: true },
+    { day: 'Sunday', time: '10:00 AM – 01:00 AM', isClosed: false },
   ];
 
   return (
@@ -51,24 +51,23 @@ const AboutSection = () => {
 
           {/* Content (NOW A ROUNDED CARD + LOWER POSITION) */}
           <div className={`about-content fade-in ${isVisible ? 'visible' : ''}`}>
-            <span className="subheading about-subheading">Coffee Shop Since 2003</span>
+            <span className="subheading about-subheading">Café in Jubilee Hills Since 2023</span>
 
-            <h2>We Are Not Your Average Coffee Shop</h2>
+            <h2>More Than Just Your Average Coffee Shop</h2>
 
             <p>
-              We offer some of the best locally roasted coffee using "Brazilian Santos" beans.
-              Enjoy Dark, Blonde, Jamaican, Italian &amp; Decaf roasts. Also available are our
-              specialty Lattes, Frappes, Mochas, Cappuccinos, Americanos &amp; more ...
+              Cafe Grano, nestled in the heart of Jubilee Hills, Hyderabad, is your go-to destination for amazing food and unique coffee
+               fusions. Formerly known as Laffaire Cafe, we’ve embraced a fresh new identity while continuing our promise of unforgettable 
+               culinary experiences. 
             </p>
 
             <p>
-              To see more of our coffee, specialty drinks &amp; food menus, please click the
-              link below. There are many variations of passages available but the majority have
-              suffered alteration in some form by injected.
+              From our signature coffee blends to flavorful dishes, every visit offers the perfect mix of 
+              bold taste, cozy ambiance, and warm hospitality. Join us and discover how Cafe Grano turns every meal into a delightful memory.
             </p>
 
-            <Link to="/about" className="btn btn-primary about-cta">
-              Click To Read More
+            <Link to="/menu" className="btn btn-primary about-cta">
+              EXPLORE OUR MENU
             </Link>
           </div>
 

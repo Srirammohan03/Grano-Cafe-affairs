@@ -16,7 +16,8 @@ export const categories: Category[] = [
   { id: "toasts-bread", label: "Toasts & Bread Basket" },
   { id: "gourmet-fries", label: "Gourmet Fries" },
   { id: "pizzas", label: "Pizzas" },
-];
+]; 
+
 
 // helpers
 const price = (min: number, max: number, seed: number) => {

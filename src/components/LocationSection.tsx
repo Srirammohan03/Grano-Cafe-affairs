@@ -46,15 +46,15 @@ const LocationSection = () => {
           <div className="location-detail">
             <p className="location-label">Information Coffee House:</p>
             <p className="location-address">
-              D.8-2-293/82/A/ 1263/A, Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad
+              Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad
             </p>
             <p className="location-email">granohyd@gmail.com</p>
             <p className="location-hours">
-              Mon – <span>Sat</span> : 10:00 AM – 01:00 AM, Holidays : Closed
+              <span>All Day</span> : 10:00 AM – 01:00 AM
             </p>
           </div>
 
-          <Link to="/contact" className="btn btn-primary">Get Directions</Link>
+          <Link to="https://maps.app.goo.gl/te3YRQa4X3we5o4u8" className="btn btn-primary">Get Directions</Link>
         </div>
 
         {/* Map */}

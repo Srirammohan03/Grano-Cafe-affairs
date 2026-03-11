@@ -11,26 +11,32 @@ type Props = {
   onAdd?: (item: NewMenuItem) => void;
   cta?: React.ReactNode;
   showImage?: boolean;
+  showAddButton?: boolean;
+  showTitle?: boolean;
 };
 
 function MenuColumn({
   items,
+  showAddButton,
   onAdd,
 }: {
   items: NewMenuItem[];
+  showAddButton?: boolean;
   onAdd?: (item: NewMenuItem) => void;
 }) {
   return (
     <div className="msb-list">
       {items.map((it) => (
         <div className="msb-row" key={it.id}>
-          <div className="msb-rowTop">
+          {/* <div className="msb-rowTop">
+
             <div className="msb-itemName">{it.name}</div>
 
             <div className="msb-right">
+
               <div className="msb-price">₹{it.price}</div>
 
-              {onAdd && (
+              {showAddButton && onAdd && (
                 <button
                   className="msb-addBtn"
                   onClick={() => onAdd(it)}
@@ -39,8 +45,16 @@ function MenuColumn({
                   +
                 </button>
               )}
+
             </div>
-          </div>
+          </div> */}
+          <div className="msb-rowTop">
+
+  <span className="msb-itemName">{it.name}</span>
+
+  <span className="msb-price">₹{it.price}</span>
+
+</div>
 
           <div className="msb-desc">{it.description}</div>
           <div className="msb-divider" />
@@ -59,6 +73,8 @@ export default function MenuSectionBlock({
   onAdd,
   cta,
   showImage = true,
+  showAddButton = false,
+  showTitle = true,
 }: Props) {
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -88,31 +104,46 @@ export default function MenuSectionBlock({
   }, [items]);
 
   return (
-   <section
-  ref={sectionRef}
-  className={`msb-wrap ${!showImage ? "msb-noImage" : ""}`}
->
+    <section
+      ref={sectionRef}
+      className={`msb-wrap ${!showImage ? "msb-noImage" : ""}`}
+    >
+
       <div className={`msb-block ${reverse ? "msb-reverse" : ""}`}>
-       {showImage && (
-  <div className="msb-media">
-    <div className="msb-plate">
-      <img src={imageSrc} alt={title} className="msb-img" />
-    </div>
-  </div>
-)}
+
+        {showImage && (
+          <div className="msb-media">
+            <div className="msb-plate">
+              <img src={imageSrc} alt={title} className="msb-img" />
+            </div>
+          </div>
+        )}
 
         <div className="msb-content">
+
           {kicker && <div className="msb-kicker">{kicker}</div>}
-          <h2 className="msb-title">{title}</h2>
+
+          {showTitle && <h2 className="msb-title">{title}</h2>}
 
           <div className="msb-itemsGrid">
-            <MenuColumn items={left} onAdd={onAdd} />
-            <MenuColumn items={right} onAdd={onAdd} />
+            <MenuColumn
+              items={left}
+              showAddButton={showAddButton}
+              onAdd={onAdd}
+            />
+            <MenuColumn
+              items={right}
+              showAddButton={showAddButton}
+              onAdd={onAdd}
+            />
           </div>
 
           {cta && <div className="msb-cta">{cta}</div>}
+
         </div>
+
       </div>
+
     </section>
   );
 }

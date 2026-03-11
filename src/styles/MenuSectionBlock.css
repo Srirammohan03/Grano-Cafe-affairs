@@ -1,3 +1,23 @@
+.msb-rowTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.msb-itemName {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text);
+  font-family: var(--font-heading);
+}
+
+.msb-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary);
+  white-space: nowrap;
+}
 .msb-wrap {
   background: #fff;
   padding: 60px 0;

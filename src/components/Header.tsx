@@ -50,7 +50,7 @@ const Header = () => {
     { path: "/", label: "HOME" },
     { path: "/menu", label: "MENU" },
     { path: "/about", label: "ABOUT" },
-    { path: "/events", label: "EVENTS" },
+    // { path: "/events", label: "EVENTS" },
     { path: "/contact", label: "CONTACT" },
   ];
 
@@ -61,26 +61,44 @@ const Header = () => {
         <div className="top-bar">
           <div className="container">
             <div className="top-bar-content">
-              <div className="top-bar-item">
-                <div className="top-bar-icon">
-                  <MapPin size={16} fill="currentColor" />
-                </div>
-                <div className="top-bar-text">
-                  <span className="top-bar-label">LOCATION</span>
-                  <span className="top-bar-value">
-                    D.8-2-293/82/A/ 1263/A, Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad
-                  </span>
-                </div>
-              </div>
-              <div className="top-bar-item">
-                <div className="top-bar-text right-align">
-                  <span className="top-bar-label">CALL DELIVERY</span>
-                  <span className="top-bar-value">+91 96769 64871</span>
-                </div>
-                <div className="top-bar-icon">
-                  <Phone size={16} fill="currentColor" />
-                </div>
-              </div>
+               
+      <div className="top-bar-item">
+  <a
+    href="https://maps.app.goo.gl/H6F6feSL1B4xSzhw9"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="top-bar-link"
+  >
+    <div className="top-bar-icon">
+      <MapPin size={16} fill="currentColor" />
+    </div>
+
+    <div className="top-bar-text">
+      <span className="top-bar-label">VISIT US</span>
+      <span className="top-bar-value">
+        Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad
+      </span>
+    </div>
+  </a>
+</div>
+
+<div className="top-bar-item right-align">
+  <a
+    href="tel:+919676964871"
+    className="top-bar-link"
+  >
+    <div className="top-bar-text right-align">
+      <span className="top-bar-label">CALL US</span>
+      <span className="top-bar-value">+91 96769 64871</span>
+    </div>
+
+    <div className="top-bar-icon">
+      <Phone size={16} fill="currentColor" />
+    </div>
+  </a>
+</div>
+                
+
             </div>
           </div>
         </div>
@@ -101,7 +119,7 @@ const Header = () => {
 
                 {/* Desktop Left Links */}
                 <ul className="nav-links left">
-                  {navLinks.slice(0, 3).map((link) => (
+                  {navLinks.slice(0, 2).map((link) => (
                     <li key={link.path}>
                       <Link
                         to={link.path}
@@ -125,7 +143,7 @@ const Header = () => {
                 {/* Right Section (Links + Icons) */}
                 <div className="right-section">
                   <ul className="nav-links right">
-                    {navLinks.slice(3).map((link) => (
+                    {navLinks.slice(2).map((link) => (
                       <li key={link.path}>
                         <Link
                           to={link.path}
