@@ -9,7 +9,7 @@ export type NewMenuItem = {
   id: string;
   name: string;
   description: string;
-  price: number;
+  price: number | string;
   categoryId: string;
   slug: string;
 };
