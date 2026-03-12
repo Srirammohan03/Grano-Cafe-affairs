@@ -14,7 +14,7 @@ interface HeroProps {
 
 const Hero = ({
   title = 'Our Passion Is in Our Coffee',
-  subtitle = '- Welcome to GRANO Coffee Shop -',
+  subtitle = '- Welcome to GRANO Coffee Affairs -',
   description = 'GRANO Coffee is the perfect spot in Hyderabad to celebrate a special occasion or to simply head out for a bite to eat.',
   showButtons = true,
   isPageHero = false,

@@ -6,7 +6,7 @@ import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
 import OrderModal from '../components/OrderModal';
-import heroImage from '../assets/category-coffee.jpg';
+import heroImage from '/images/menu.png';
 
 const Menu = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);

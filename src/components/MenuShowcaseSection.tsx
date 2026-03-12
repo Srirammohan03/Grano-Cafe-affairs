@@ -11,7 +11,7 @@ import plateFallback from "/images/aboutsec.png";
 export default function MenuShowcaseSection() {
 
   const showcaseItems = useMemo(() => {
-    const wanted = new Set(["sandwiches"]);
+    const wanted = new Set([ "combo", "coffee"]);
     return menuItems.filter((m) => wanted.has(m.categoryId)).slice(0, 6);
   }, []);
 

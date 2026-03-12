@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import eventsOutdoor from '../assets/events-outdoor.jpg';
-import eventsCoffee from '../assets/events-coffee.jpg';
+import eventsOutdoor from '/images/event.webp';
+import eventsCoffee from '/images/event1.jpg';
 import '../styles/sections.css';
+import { toast } from "react-toastify";
 
 interface AccordionItem {
   id: string;
@@ -14,6 +15,14 @@ const EventsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>('private');
   const [showModal, setShowModal] = useState(false);
+  const [eventForm, setEventForm] = useState({
+  name:"",
+  email:"",
+  phone:"",
+  eventType:"",
+  eventDate:"",
+  message:""
+});
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,6 +35,46 @@ const EventsSection = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJzo4YjSftOutD-GTE8qaScbMeTV5MAENtaNCuOqod1I8deLqd6BuZXGLCqBBO_LES6g/exec";
+
+const handleEventSubmit = async (e:any) => {
+
+  e.preventDefault();
+
+  try {
+
+    const res = await fetch(SCRIPT_URL,{
+      method:"POST",
+      body: JSON.stringify({
+        type:"event",
+        ...eventForm
+      })
+    });
+
+    if(res.ok){
+
+      toast.success("Event enquiry sent successfully!");
+
+      setEventForm({
+        name:"",
+        email:"",
+        phone:"",
+        eventType:"",
+        eventDate:"",
+        message:""
+      });
+
+      setShowModal(false);
+
+    }
+
+  } catch (error) {
+
+    toast.error("Something went wrong");
+
+  }
+
+};
 
   const accordionItems: AccordionItem[] = [
     {
@@ -106,7 +155,7 @@ const EventsSection = () => {
                 className="btn btn-primary"
                 onClick={() => setShowModal(true)}
               >
-                Schedule An Event
+                Book An Event
               </button>
             </div>
 
@@ -135,49 +184,63 @@ const EventsSection = () => {
               Fill the form below and our team will contact you.
             </p>
 
-            <form className="event-form">
+            <form className="event-form" onSubmit={handleEventSubmit}>
 
-              <input
-                type="text"
-                placeholder="Full Name"
-                required
-              />
+<input
+type="text"
+placeholder="Full Name"
+required
+value={eventForm.name}
+onChange={(e)=>setEventForm({...eventForm,name:e.target.value})}
+/>
 
-              <input
-                type="email"
-                placeholder="Email Address"
-                required
-              />
+<input
+type="email"
+placeholder="Email Address"
+required
+value={eventForm.email}
+onChange={(e)=>setEventForm({...eventForm,email:e.target.value})}
+/>
 
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                required
-              />
+<input
+type="tel"
+placeholder="Phone Number"
+required
+value={eventForm.phone}
+onChange={(e)=>setEventForm({...eventForm,phone:e.target.value})}
+/>
 
-              <select required>
-                <option value="">Select Event Type</option>
-                <option>Birthday Party</option>
-                <option>Private Gathering</option>
-                <option>Business Meeting</option>
-                <option>Other</option>
-              </select>
+<select
+required
+value={eventForm.eventType}
+onChange={(e)=>setEventForm({...eventForm,eventType:e.target.value})}
+>
+<option value="">Select Event Type</option>
+<option value="Birthday Party">Birthday Party</option>
+<option value="Private Gathering">Private Gathering</option>
+<option value="Business Meeting">Business Meeting</option>
+<option value="Other">Other</option>
+</select>
 
-              <input
-                type="date"
-                required
-              />
+<input
+type="date"
+required
+value={eventForm.eventDate}
+onChange={(e)=>setEventForm({...eventForm,eventDate:e.target.value})}
+/>
 
-              <textarea
-                placeholder="Tell us about your event"
-                rows={4}
-              />
+<textarea
+placeholder="Tell us about your event"
+rows={4}
+value={eventForm.message}
+onChange={(e)=>setEventForm({...eventForm,message:e.target.value})}
+/>
 
-              <button type="submit" className="btn btn-primary">
-                Send Enquiry
-              </button>
+<button type="submit" className="btn btn-primary">
+Send Enquiry
+</button>
 
-            </form>
+</form>
 
           </div>
 

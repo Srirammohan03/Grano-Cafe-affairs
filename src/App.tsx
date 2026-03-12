@@ -2,7 +2,8 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/global.css';
 import './styles/fonts.css';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -11,6 +12,7 @@ const NewMenu = lazy(() => import('./pages/newMenu'));
 const About = lazy(() => import('./pages/About'));
 const Events = lazy(() => import('./pages/Events'));
 const Contact = lazy(() => import('./pages/Contact'));
+
 
 // Loading fallback
 // const PageLoader = () => (
@@ -31,6 +33,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const App = () => (
   <BrowserRouter>
     <Suspense >
+      <ToastContainer position="bottom-right" autoClose={3000} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new-menu" element={<Menu />} />

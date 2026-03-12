@@ -4,8 +4,9 @@ import Hero from '../components/Hero';
 import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
-import locationImage from '../assets/why-choose-us.jpg';
+import locationImage from '/images/contact.jpg';
 import '../styles/pages.css';
+import { toast } from "react-toastify";
 
 interface ContactFormData {
   name: string;
@@ -53,23 +54,40 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJzo4YjSftOutD-GTE8qaScbMeTV5MAENtaNCuOqod1I8deLqd6BuZXGLCqBBO_LES6g/exec";
+
+const handleSubmit = async (e: FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        type: "contact",
+        ...formData
+      })
     });
-    setIsSubmitting(false);
-  };
+
+   toast.success("Thank you! We will contact you soon.");
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: ""
+    });
+
+  } catch (error) {
+
+    toast.error("Something went wrong");
+
+  }
+
+  setIsSubmitting(false);
+};
 
   const contactCards = [
     {
@@ -211,7 +229,7 @@ const Contact = () => {
         <CTASection
           title="Visit Us Today"
           description="Experience the warmth and quality of Grano Coffee in person."
-          buttonText="Get Directions"
+          buttonText="Book a Table"
         />
       </main>
       <Footer />

@@ -212,7 +212,7 @@ const Header = () => {
                     {link.label}
                   </Link>
                   {/* Visual chevron to match the design implies dropdowns */}
-                  <ChevronDown className="mobile-chevron" size={16} />
+                  {/* <ChevronDown className="mobile-chevron" size={16} /> */}
                 </div>
               </li>
             ))}

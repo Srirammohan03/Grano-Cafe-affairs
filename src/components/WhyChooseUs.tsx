@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Coffee, Smile, Play, CheckCircle } from 'lucide-react';
-import whyImage from '../assets/why-choose-us.jpg';
+import { Coffee, Smile, CheckCircle } from 'lucide-react';
 import '../styles/sections.css';
 
 const WhyChooseUs = () => {
@@ -26,19 +25,20 @@ const WhyChooseUs = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Animate counters when visible
   useEffect(() => {
     if (!isVisible) return;
 
     const targetCoffee = 658;
-    const targetSatisfaction = 99;
+    const targetSatisfaction = 4.4;
     const duration = 2000;
     const steps = 60;
     const intervalTime = duration / steps;
 
     let step = 0;
+
     const timer = setInterval(() => {
       step++;
+
       setCoffeeCount(Math.floor((step / steps) * targetCoffee));
       setSatisfactionCount(Math.floor((step / steps) * targetSatisfaction));
 
@@ -55,24 +55,28 @@ const WhyChooseUs = () => {
   const features = [
     'Carefully Selected Imported Coffee Beans',
     'Warm & Cozy Ambience',
-    "Consistent Flavor in Every Cup",
+    'Consistent Flavor in Every Cup',
   ];
 
   return (
-    <section ref={sectionRef} className="section  why-section-new ">
+    <section ref={sectionRef} className="section why-section-new">
       <div className="container">
         <div className="why-grid-new">
-          {/* Content - Left */}
+
+          {/* Content */}
           <div className={`why-content-new fade-in-left ${isVisible ? 'visible' : ''}`}>
-            <span className="subheading" style={{ color: '#C5A480' }}>Why Choose Us</span>
+            <span className="subheading" style={{ color: '#C5A480' }}>
+              Why Choose Us
+            </span>
+
             <h2>Crafting Exceptional Coffee Experiences</h2>
+
             <p>
               Welcome to Cafe Grano, a vibrant coffee destination in Jubilee Hills, Hyderabad.
-  Previously known as Laffaire Cafe, we bring together carefully selected coffee
-  beans, flavorful dishes, and a warm, cozy ambiance. From signature coffee blends
-  to delicious bites, every visit is designed to give you a memorable experience
-  with great taste and great company.
+              Previously known as Laffaire Cafe, we bring together carefully selected coffee
+              beans, flavorful dishes, and a warm, cozy ambiance.
             </p>
+
             <div className="why-features-new">
               {features.map((feature, index) => (
                 <div key={index} className="why-feature-new">
@@ -83,28 +87,35 @@ const WhyChooseUs = () => {
             </div>
           </div>
 
-          {/* Stats Card - Center */}
+          {/* Stats */}
           <div className={`stats-card-new fade-in ${isVisible ? 'visible' : ''}`}>
             <div className="stat-item">
               <Coffee size={32} className="stat-icon" />
               <div className="stat-number">{coffeeCount}+</div>
               <div className="stat-label">Cup Coffee Every Day</div>
             </div>
+
             <div className="stat-divider"></div>
+
             <div className="stat-item">
               <Smile size={32} className="stat-icon" />
-              <div className="stat-number">{satisfactionCount}%</div>
-              <div className="stat-label">Customer Satisfaction</div>
+              <div className="stat-number">{satisfactionCount}⭐</div>
+              <div className="stat-label">Ratings On Google</div>
             </div>
           </div>
 
-          {/* Image - Right */}
+          {/* Video Instead of Image */}
           <div className={`why-image-new fade-in-right ${isVisible ? 'visible' : ''}`}>
-            <img src={whyImage} alt="Enjoying coffee" loading="lazy" />
-            <button className="play-button-new" aria-label="Play video">
-              <Play size={28} fill="currentColor" />
-            </button>
+            <video
+              src="/images/granovd.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="why-video"
+            />
           </div>
+
         </div>
       </div>
     </section>

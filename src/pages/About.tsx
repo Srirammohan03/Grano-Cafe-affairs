@@ -4,8 +4,8 @@ import Hero from '../components/Hero';
 import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
-import aboutImage from '../assets/about-barista.jpg';
-import whyImage from '../assets/why-choose-us.jpg';
+import aboutImage from '/images/about.jpg';
+import whyImage from '/images/abt.jpg';
 import '../styles/pages.css';
 
 const About = () => {
@@ -50,20 +50,18 @@ const About = () => {
                 <span className="subheading">Our Story</span>
                 <h2>FROM BEAN TO CUP, WITH LOVE</h2>
                 <p>
-                  Founded in 2003, Grano Coffee started as a small family-owned
-                  coffee shop with a simple mission: to serve the best coffee in town
-                  while creating a warm, welcoming space for our community.
+                  Cafe Grano, located in the vibrant neighborhood of Jubilee Hills, Hyderabad, is a place where coffee, food,
+                   and great moments come together. Formerly known as Laffaire Cafe, we embraced a new identity as 
+                  Cafe Grano while continuing our passion for serving exceptional coffee and delicious dishes in a warm and welcoming space.
                 </p>
                 <p>
-                  Over the years, we've grown from a single location to become a
-                  beloved destination for coffee lovers. But our values remain the
-                  same – quality ingredients, expert craftsmanship, and genuine
-                  hospitality.
+                  What started as a cozy cafe has grown into a favorite destination for coffee lovers, friends, and families. 
+                  Whether you're stopping by for your morning coffee, catching up with friends, 
+                  or enjoying a relaxing evening, Cafe Grano offers the perfect blend of flavor, comfort, and hospitality.
                 </p>
                 <p>
-                  Every bean we use is ethically sourced and carefully roasted to
-                  bring out its unique flavor profile. Our baristas are trained
-                  extensively to ensure every cup meets our exacting standards.
+                 Every cup we serve is crafted with carefully selected coffee beans and attention to detail. 
+                 Our team is dedicated to delivering quality, consistency, and an experience that keeps you coming back.
                 </p>
               </div>
               <div className={`story-image fade-in-right ${isVisible ? 'visible' : ''}`}>
@@ -80,27 +78,26 @@ const About = () => {
             <div className="story-grid" style={{ flexDirection: 'row-reverse' }}>
               <div className="story-content fade-in-right visible">
                 <span className="subheading">Our Values</span>
-                <h2>WHAT MAKES US DIFFERENT</h2>
+                <h2>WHAT MAKES CAFE GRANO SPECIAL</h2>
                 <p>
-                  We believe that great coffee is about more than just the drink –
-                  it's about the experience. That's why we focus on:
+                  At Cafe Grano, we believe coffee is more than just a drink — it’s an experience meant to be enjoyed and shared.
                 </p>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                   <li style={{ marginBottom: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                     <span style={{ color: '#C5A480', fontWeight: 'bold' }}>✓</span>
-                    <span><strong>Quality First:</strong> Only the finest beans and freshest ingredients</span>
+                    <span><strong>Quality First:</strong> Premium coffee beans and fresh ingredients in every cup and dish.</span>
                   </li>
                   <li style={{ marginBottom: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                     <span style={{ color: '#C5A480', fontWeight: 'bold' }}>✓</span>
-                    <span><strong>Community:</strong> A welcoming space for everyone</span>
+                    <span><strong>Warm Ambience:</strong> A cozy space where friends, families, and colleagues can relax and connect.</span>
                   </li>
                   <li style={{ marginBottom: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                     <span style={{ color: '#C5A480', fontWeight: 'bold' }}>✓</span>
-                    <span><strong>Sustainability:</strong> Eco-friendly practices throughout</span>
+                    <span><strong>Passion for Coffee:</strong> Every cup is prepared with care by skilled baristas.</span>
                   </li>
                   <li style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                     <span style={{ color: '#C5A480', fontWeight: 'bold' }}>✓</span>
-                    <span><strong>Innovation:</strong> Always exploring new flavors and techniques</span>
+                    <span><strong>Memorable Experiences:</strong> From casual meetups to special moments, we create a welcoming place for everyone.</span>
                   </li>
                 </ul>
               </div>

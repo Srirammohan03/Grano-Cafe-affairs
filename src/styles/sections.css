@@ -242,7 +242,7 @@
 
   /* when stacked, remove extra top gap */
   .about-content {
-    margin-top: 0;
+    margin: 0px;
     padding: 28px 22px;
   }
 
@@ -410,6 +410,47 @@
 }
 
 /* Why Choose Us Section - NEW Design */
+.why-video {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 70%;        /* reduced width */
+  max-width: 700px;  /* prevents large screens from stretching */
+}
+
+.video-player {
+  width: 100%;
+  max-height: 600px; /* reduce height */
+  border-radius: 10px;
+}
+
+.video-close-btn {
+  position: absolute;
+  top: -35px;
+  right: -10px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 50%;
+}
 .why-section-new {
   position: relative;
   overflow: hidden;
@@ -588,6 +629,10 @@
 
   .why-content-new h2 {
     font-size: 1.75rem;
+    color: var(--text);
+  }
+   .why-content-new p {
+    color: var(--text);
   }
 
   .why-image-new img {

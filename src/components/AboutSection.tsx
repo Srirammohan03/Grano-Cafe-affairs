@@ -30,8 +30,8 @@ const AboutSection = () => {
     { day: 'Wednesday', time: '10:00 AM – 01:00 AM ' },
     { day: 'Thursday', time: '10:00 AM – 01:00 AM ' },
     { day: 'Friday', time: '10:00 AM – 01:00 AM ' },
-    { day: 'Saturday', time: '10:00 AM – 01:00 AM' },
-    { day: 'Sunday', time: '10:00 AM – 01:00 AM', isClosed: false },
+    { day: 'Saturday', time: '09:00 AM – 01:00 AM' },
+    { day: 'Sunday', time: '09:00 AM – 01:00 AM', isClosed: false },
   ];
 
   return (

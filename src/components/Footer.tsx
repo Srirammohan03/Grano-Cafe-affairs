@@ -37,13 +37,13 @@ const Footer = () => {
                 Enjoy a cozy space filled with great flavors, warm vibes, and unforgettable moments.
               </p>
               <div className="footer-social">
-                <a href="#" className="social-icon" aria-label="Facebook">
+                <a href="https://www.facebook.com/profile.php?id=61587227054505" className="social-icon" aria-label="Facebook" target='_blank'>
                   <Facebook size={18} />
                 </a>
-                <a href="#" className="social-icon" aria-label="Twitter">
+                {/* <a href="#" className="social-icon" aria-label="Twitter">
                   <Twitter size={18} />
-                </a>
-                <a href="#" className="social-icon" aria-label="Instagram">
+                </a> */}
+                <a href="https://www.instagram.com/granohyd" className="social-icon" aria-label="Instagram" target='_blank'>
                   <Instagram size={18} />
                 </a>
               </div>
@@ -74,20 +74,20 @@ const Footer = () => {
             <div className="footer-section">
               <h3>Hour Open</h3>
               <div className="footer-hours-item">
-                <span className="footer-hours-day">All Day</span>
+                <span className="footer-hours-day">Mon - Fri</span>
                 <span className="footer-hours-time">10:00 AM – 01:00 AM</span>
               </div>
-              {/* <div className="footer-hours-item">
+              <div className="footer-hours-item">
                 <span className="footer-hours-day">Saturday:</span>
                 <span className="footer-hours-time">10:00 AM – 01:00 AM</span>
-              </div> */}
+              </div>
               <div className="footer-hours-item">
                 <span className="footer-hours-day">Sunday:</span>
-                <span className="footer-hours-time">Open</span>
+                <span className="footer-hours-time">09:00 AM – 01:00 AM</span>
               </div>
               <div className="footer-hours-item">
                 <span className="footer-hours-day">Holidays:</span>
-                <span className="footer-hours-time">Open</span>
+                <span className="footer-hours-time">09:00 AM – 01:00 AM</span>
               </div>
               {/* <div className="footer-hours-item">
                 <span className="footer-hours-day">Happy Hours:</span>
@@ -95,7 +95,7 @@ const Footer = () => {
               </div> */}
             </div>
 
-            {/* Newsletter */}
+            {/* Newsletter
             <div className="footer-section footer-newsletter">
               <h3>Newsletters & Event</h3>
               <p>
@@ -125,7 +125,21 @@ const Footer = () => {
                   I agree to the Privacy Policy
                 </label>
               </form>
-            </div>
+            </div> */}
+            <div className="footer-section footer-newsletter">
+              <h3>Our Menu</h3>
+  {/* <p>Explore our delicious selections crafted with fresh ingredients</p> */}
+
+  <ul className="footer-menu-list">
+    <li>Breakfast</li>
+    <li>Gourmet Fries</li>
+    <li>Smokey Die Pizzas</li>
+    <li>Main On Your Plate</li>
+    <li>Special Coffee</li>
+    {/* <li>Tea Pots</li> */}
+    <li>Appetizers</li>
+  </ul>
+            </div> 
           </div>
 
           {/* Bottom */}

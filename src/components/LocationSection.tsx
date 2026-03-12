@@ -50,7 +50,8 @@ const LocationSection = () => {
             </p>
             <p className="location-email">granohyd@gmail.com</p>
             <p className="location-hours">
-              <span>All Day</span> : 10:00 AM – 01:00 AM
+              <span>Mon-Fri</span> : 10:00 AM – 01:00 AM <br />
+              <span>Sat & Sun</span> : 09:00 AM – 01:00 AM
             </p>
           </div>
 

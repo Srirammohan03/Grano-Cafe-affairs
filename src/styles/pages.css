@@ -1,6 +1,67 @@
 /* ========================================
    PAGE-SPECIFIC STYLES
    ======================================== */
+   /* Order popup overlay */
+.order-popup-overlay{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+/* Popup box */
+.order-popup{
+  background:#fff;
+  padding:40px;
+  border-radius:12px;
+  text-align:center;
+  max-width:350px;
+  width:90%;
+}
+
+.order-popup h3{
+  margin-bottom:20px;
+}
+
+/* platform buttons */
+.order-platforms{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  margin-bottom:20px;
+}
+
+.order-btn{
+  padding:12px 20px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  color:#fff;
+}
+
+/* brand colors */
+.order-btn.zomato{
+  background:#E23744;
+}
+
+.order-btn.swiggy{
+  background:#FC8019;
+}
+
+/* close button */
+.order-close{
+  background:#ddd;
+  border:none;
+  padding:8px 16px;
+  border-radius:6px;
+  cursor:pointer;
+}
 
 /* About Page */
 .about-page-story {
@@ -31,6 +92,8 @@
 .story-image img {
   border-radius: var(--radius-medium);
   box-shadow: var(--shadow-card);
+  height: 600px;
+  width:550px;
 }
 
 .story-image-accent {
