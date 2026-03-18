@@ -9,9 +9,9 @@ import BackToTop from "../components/BackToTop";
 import newsBg from "../assets/hero-coffee.jpg";
 import eventsOutdoor from "../assets/events-outdoor.jpg";
 import eventsCoffee from "../assets/events-coffee.jpg";
-import magazineImage1 from "../assets/category-coffee.jpg";
+import magazineImage1 from "../assets/2.jpg";
 import magazineImage2 from "../assets/1.png";
-import magazineImage3 from "../assets/why-choose-us.jpg";
+import magazineImage3 from "../assets/3.jpg";
 import "../styles/pages.css";
 
 const InNews = () => {
