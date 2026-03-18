@@ -76,11 +76,11 @@ export default function NewMenu() {
         <div className="menuContainer">
           <div className="menuTop">
             <div className="menuText">
-              <h1 className="menuTitle">Explore Grano Cafe Menu</h1>
-              <p className="menuSub">
+              <h1 className="menuTitle">Explore Grano Cafe Menu</h1><br />
+              {/* <p className="menuSub">
                 Tap <strong>+</strong> to add and complete your order in
                 seconds.
-              </p>
+              </p> */}
             </div>
 
             {/* MOBILE FILTER BUTTON */}
