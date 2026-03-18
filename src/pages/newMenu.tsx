@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRef } from "react";
 import "../styles/newMenu.css";
 
 import Header from "../components/Header";
@@ -20,6 +20,18 @@ export default function NewMenu() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<NewMenuItem | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleCategoryChange = (id: string) => {
+    setActiveCategory(id);
+    setTimeout(() => {
+      if (contentRef.current) {
+        const yOffset = -120; // Adjust for sticky header
+        const y = contentRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 50); // Small delay to allow state and DOM to update first
+  };
 
   const handleOrderClick = (item: NewMenuItem) => {
     setSelectedItem(item);
@@ -76,7 +88,7 @@ export default function NewMenu() {
               <MenuCategoryTabs
                 categories={categories}
                 activeId={activeCategory}
-                onChange={(id) => setActiveCategory(id)}
+                onChange={handleCategoryChange}
               />
             </div>
           </div>
@@ -88,11 +100,11 @@ export default function NewMenu() {
             <MenuCategoryTabs
               categories={categories}
               activeId={activeCategory}
-              onChange={(id) => setActiveCategory(id)}
+              onChange={handleCategoryChange}
             />
           </aside>
 
-          <div className="menuContent">
+          <div className="menuContent" ref={contentRef}>
             {blocks.map((b) => (
            <MenuSectionBlock
   key={b.key}

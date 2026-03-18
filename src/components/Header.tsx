@@ -51,6 +51,8 @@ const Header = () => {
     { path: "/menu", label: "MENU" },
     { path: "/about", label: "ABOUT" },
     // { path: "/events", label: "EVENTS" },
+    { path: "/innews", label: "IN NEWS" },
+
     { path: "/contact", label: "CONTACT" },
   ];
 
@@ -61,44 +63,38 @@ const Header = () => {
         <div className="top-bar">
           <div className="container">
             <div className="top-bar-content">
-               
-      <div className="top-bar-item">
-  <a
-    href="https://maps.app.goo.gl/H6F6feSL1B4xSzhw9"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="top-bar-link"
-  >
-    <div className="top-bar-icon">
-      <MapPin size={16} fill="currentColor" />
-    </div>
+              <div className="top-bar-item">
+                <a
+                  href="https://maps.app.goo.gl/H6F6feSL1B4xSzhw9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="top-bar-link"
+                >
+                  <div className="top-bar-icon">
+                    <MapPin size={16} fill="currentColor" />
+                  </div>
 
-    <div className="top-bar-text">
-      <span className="top-bar-label">VISIT US</span>
-      <span className="top-bar-value">
-        Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad
-      </span>
-    </div>
-  </a>
-</div>
+                  <div className="top-bar-text">
+                    <span className="top-bar-label">VISIT US</span>
+                    <span className="top-bar-value">
+                      Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad
+                    </span>
+                  </div>
+                </a>
+              </div>
 
-<div className="top-bar-item right-align">
-  <a
-    href="tel:+919676964871"
-    className="top-bar-link"
-  >
-    <div className="top-bar-text right-align">
-      <span className="top-bar-label">CALL US</span>
-      <span className="top-bar-value">+91 96769 64871</span>
-    </div>
+              <div className="top-bar-item right-align">
+                <a href="tel:+919676964871" className="top-bar-link">
+                  <div className="top-bar-text right-align">
+                    <span className="top-bar-label">CALL US</span>
+                    <span className="top-bar-value">+91 96769 64871</span>
+                  </div>
 
-    <div className="top-bar-icon">
-      <Phone size={16} fill="currentColor" />
-    </div>
-  </a>
-</div>
-                
-
+                  <div className="top-bar-icon">
+                    <Phone size={16} fill="currentColor" />
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
