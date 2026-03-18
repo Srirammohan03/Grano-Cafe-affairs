@@ -12,7 +12,7 @@ const NewMenu = lazy(() => import('./pages/newMenu'));
 const About = lazy(() => import('./pages/About'));
 const Events = lazy(() => import('./pages/Events'));
 const Contact = lazy(() => import('./pages/Contact'));
-
+const InNews = lazy(() => import('./pages/InNews'));
 
 // Loading fallback
 // const PageLoader = () => (
@@ -39,8 +39,9 @@ const App = () => (
         <Route path="/new-menu" element={<Menu />} />
         <Route path="/menu" element={<NewMenu />} />
         <Route path="/about" element={<About />} />
-        <Route path="/events" element={<Events />} />
+        {/* <Route path="/events" element={<Events />} /> */}
         <Route path="/contact" element={<Contact />} />
+        <Route path="/innews" element={<InNews />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </Suspense>
