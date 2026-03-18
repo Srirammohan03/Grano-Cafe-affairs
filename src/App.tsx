@@ -1,18 +1,19 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './styles/global.css';
-import './styles/fonts.css';
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./styles/global.css";
+import "./styles/fonts.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Lazy load pages for better performance
-const Home = lazy(() => import('./pages/Home'));
-const Menu = lazy(() => import('./pages/Menu'));
-const NewMenu = lazy(() => import('./pages/newMenu'));
-const About = lazy(() => import('./pages/About'));
-const Events = lazy(() => import('./pages/Events'));
-const Contact = lazy(() => import('./pages/Contact'));
-const InNews = lazy(() => import('./pages/InNews'));
+const Home = lazy(() => import("./pages/Home"));
+const Menu = lazy(() => import("./pages/Menu"));
+const NewMenu = lazy(() => import("./pages/newMenu"));
+const About = lazy(() => import("./pages/About"));
+const Events = lazy(() => import("./pages/Events"));
+const Contact = lazy(() => import("./pages/Contact"));
+const InNews = lazy(() => import("./pages/InNews"));
+const Blog = lazy(() => import("./pages/Blog"));
 
 // Loading fallback
 // const PageLoader = () => (
@@ -32,16 +33,17 @@ const InNews = lazy(() => import('./pages/InNews'));
 
 const App = () => (
   <BrowserRouter>
-    <Suspense >
+    <Suspense>
       <ToastContainer position="bottom-right" autoClose={3000} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new-menu" element={<Menu />} />
         <Route path="/menu" element={<NewMenu />} />
         <Route path="/about" element={<About />} />
-        {/* <Route path="/events" element={<Events />} /> */}
+        <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/innews" element={<InNews />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </Suspense>

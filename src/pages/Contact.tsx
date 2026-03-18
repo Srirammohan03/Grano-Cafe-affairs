@@ -1,11 +1,11 @@
-import { useState, FormEvent, useEffect, useRef } from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import CTASection from '../components/CTASection';
-import Footer from '../components/Footer';
-import BackToTop from '../components/BackToTop';
-import locationImage from '/images/contact.jpg';
-import '../styles/pages.css';
+import { useState, FormEvent, useEffect, useRef } from "react";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import CTASection from "../components/CTASection";
+import Footer from "../components/Footer";
+import BackToTop from "../components/BackToTop";
+import locationImage from "/images/contact.jpg";
+import "../styles/pages.css";
 import { toast } from "react-toastify";
 
 interface ContactFormData {
@@ -21,13 +21,13 @@ const Contact = () => {
   const formRef = useRef<HTMLElement>(null);
   const [isInfoVisible, setIsInfoVisible] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
-  
+
   const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -45,7 +45,7 @@ const Contact = () => {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (infoRef.current) observer.observe(infoRef.current);
@@ -54,56 +54,54 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJzo4YjSftOutD-GTE8qaScbMeTV5MAENtaNCuOqod1I8deLqd6BuZXGLCqBBO_LES6g/exec";
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbwqHXkvb6umqWtQPDB2wWhC157AUI65UOO2XKTRgRc6Zz2HH9hO-XywmNmpJVGbCE8bpQ/exec";
 
-const handleSubmit = async (e: FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          type: "contact",
+          ...formData,
+        }),
+      });
 
-    await fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify({
-        type: "contact",
-        ...formData
-      })
-    });
+      toast.success("Thank you! We will contact you soon.");
 
-   toast.success("Thank you! We will contact you soon.");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: ""
-    });
-
-  } catch (error) {
-
-    toast.error("Something went wrong");
-
-  }
-
-  setIsSubmitting(false);
-};
+    setIsSubmitting(false);
+  };
 
   const contactCards = [
     {
-      icon: '📍',
-      title: 'Our Location',
-      content: 'D.8-2-293/82/A/ 1263/A, Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad',
+      icon: "📍",
+      title: "Our Location",
+      content:
+        "D.8-2-293/82/A/ 1263/A, Road 63A & 64, Circle 18, Jubilee Hills, Hyderabad",
     },
     {
-      icon: '📞',
-      title: 'Phone Number',
-      content: '+91 96769 64871',
+      icon: "📞",
+      title: "Phone Number",
+      content: "+91 96769 64871",
     },
     {
-      icon: '✉️',
-      title: 'Email Address',
-      content: 'granohyd@gmail.com',
+      icon: "✉️",
+      title: "Email Address",
+      content: "granohyd@gmail.com",
     },
   ];
 
@@ -127,12 +125,12 @@ const handleSubmit = async (e: FormEvent) => {
               {contactCards.map((card, index) => (
                 <div
                   key={index}
-                  className={`contact-card fade-in ${isInfoVisible ? 'visible' : ''}`}
+                  className={`contact-card fade-in ${isInfoVisible ? "visible" : ""}`}
                   style={{ transitionDelay: `${index * 0.15}s` }}
                 >
                   <div className="contact-card-icon">{card.icon}</div>
                   <h3>{card.title}</h3>
-                  <p style={{ whiteSpace: 'pre-line' }}>{card.content}</p>
+                  <p style={{ whiteSpace: "pre-line" }}>{card.content}</p>
                 </div>
               ))}
             </div>
@@ -143,12 +141,14 @@ const handleSubmit = async (e: FormEvent) => {
         <section ref={formRef} className="section contact-form-section">
           <div className="container">
             <div className="contact-form-grid">
-              <div className={`contact-form-content fade-in-left ${isFormVisible ? 'visible' : ''}`}>
+              <div
+                className={`contact-form-content fade-in-left ${isFormVisible ? "visible" : ""}`}
+              >
                 <span className="subheading">Send Us A Message</span>
                 <h2>GET IN TOUCH</h2>
                 <p>
-                  Have a question or want to book a table? Fill out the form below and we'll
-                  get back to you as soon as possible.
+                  Have a question or want to book a table? Fill out the form
+                  below and we'll get back to you as soon as possible.
                 </p>
 
                 <form className="contact-form" onSubmit={handleSubmit}>
@@ -159,7 +159,9 @@ const handleSubmit = async (e: FormEvent) => {
                         className="form-input"
                         placeholder="Your Name *"
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
                         required
                       />
                     </div>
@@ -169,7 +171,9 @@ const handleSubmit = async (e: FormEvent) => {
                         className="form-input"
                         placeholder="Your Email *"
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
                         required
                       />
                     </div>
@@ -181,7 +185,9 @@ const handleSubmit = async (e: FormEvent) => {
                         className="form-input"
                         placeholder="Phone Number"
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
+                        }
                       />
                     </div>
                     <div className="form-group">
@@ -190,7 +196,9 @@ const handleSubmit = async (e: FormEvent) => {
                         className="form-input"
                         placeholder="Subject"
                         value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, subject: e.target.value })
+                        }
                       />
                     </div>
                   </div>
@@ -199,7 +207,9 @@ const handleSubmit = async (e: FormEvent) => {
                       className="form-textarea"
                       placeholder="Your Message *"
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       required
                     ></textarea>
                   </div>
@@ -208,12 +218,14 @@ const handleSubmit = async (e: FormEvent) => {
                     className="btn btn-primary"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               </div>
 
-              <div className={`contact-map fade-in-right ${isFormVisible ? 'visible' : ''}`}>
+              <div
+                className={`contact-map fade-in-right ${isFormVisible ? "visible" : ""}`}
+              >
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6747675080314!2d78.41108467462783!3d17.42738890165261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91866f263499%3A0xb472ea500896e982!2sGrano%20-%20Coffee%20Affairs!5e0!3m2!1sen!2sin!4v1773048904051!5m2!1sen!2sin"
                   title="Location Map"
