@@ -12,6 +12,7 @@ import magazineImage1 from "../assets/2.jpg";
 import magazineImage2 from "../assets/1.png";
 import magazineImage3 from "../assets/3.jpg";
 import newsBg from "../assets/hero-coffee.jpg";
+import openMicImage from "../assets/up1.jpg";
 import "../styles/pages.css";
 import { toast } from "react-toastify";
 
@@ -23,7 +24,7 @@ interface CustomEvent {
   isoDate: string; // for the <input type="date">
   time: string;
   endTime: string;
-  cost: string;
+  // cost: string;
   description: string;
   image: string;
   isPast?: boolean;
@@ -32,82 +33,32 @@ interface CustomEvent {
 const upcomingEventsData: CustomEvent[] = [
   {
     id: 1,
-    title: "Latte Art Workshop",
-    date: "March 25, 2026",
-    isoDate: "2026-03-25",
-    time: "11:00 AM",
-    endTime: "2:00 PM",
-    cost: "₹1,500",
-    description:
-      "Learn the secrets of creating beautiful latte art from our expert baristas. Perfect for coffee enthusiasts wanting to elevate their home brewing experience.",
-    image: eventsCoffee,
-  },
-  {
-    id: 2,
-    title: "Live Acoustic Evening",
-    date: "April 2, 2026",
-    isoDate: "2026-04-02",
-    time: "6:30 PM",
-    endTime: "9:30 PM",
-    cost: "Free Entry",
-    description:
-      "Unwind with great coffee, delicious bites, and soothing live acoustic music under the stars in our outdoor courtyard.",
-    image: eventsOutdoor,
-  },
-  {
-    id: 3,
-    title: "Roasting Masterclass",
-    date: "April 10, 2026",
-    isoDate: "2026-04-10",
-    time: "2:00 PM",
+    title: "Kalā Open Mic",
+    date: "March 22, 2026",
+    isoDate: "2026-03-22",
+    time: "3:00 PM",
     endTime: "5:00 PM",
-    cost: "₹2,500",
+    // cost: "Free Entry",
     description:
-      "Discover the art of roasting coffee beans. Taste different roasts, learn about flavor profiles, and take home your own custom blend.",
-    image: newsBg,
+      "If you've ever been to our open mics before, you know how magical the room gets — full of raw talent, wholesome energy and a yearning to create and admire art. Join us again, this Sunday, at Grano Cafe to experience the magic! ⭐",
+    image: openMicImage,
   },
 ];
 
 const previousEventsData: CustomEvent[] = [
-  {
-    id: 4,
-    title: "Brewing Fundamentals",
-    date: "Jan 15, 2026",
-    isoDate: "2026-01-15",
-    time: "10:00 AM",
-    endTime: "1:00 PM",
-    cost: "₹1,200",
-    description:
-      "A packed workshop where 20 coffee enthusiasts learned the basics of V60 and Chemex brewing methods.",
-    image: magazineImage1,
-    isPast: true,
-  },
-  {
-    id: 5,
-    title: "Local Barista Throwdown",
-    date: "Dec 05, 2025",
-    isoDate: "2025-12-05",
-    time: "4:00 PM",
-    endTime: "8:00 PM",
-    cost: "Free Entry",
-    description:
-      "Cafe Grano hosted an incredible latte art throwdown featuring 32 baristas from across Hyderabad.",
-    image: magazineImage2,
-    isPast: true,
-  },
-  {
-    id: 6,
-    title: "Sunset Cupping Session",
-    date: "Oct 24, 2025",
-    isoDate: "2025-10-24",
-    time: "5:30 PM",
-    endTime: "7:00 PM",
-    cost: "₹800",
-    description:
-      "An exclusive evening of tasting rare single-origin beans, paired with light acoustic music on our patio.",
-    image: eventsOutdoor,
-    isPast: true,
-  },
+  // {
+  //   id: 4,
+  //   title: "Brewing Fundamentals",
+  //   date: "Jan 15, 2026",
+  //   isoDate: "2026-01-15",
+  //   time: "10:00 AM",
+  //   endTime: "1:00 PM",
+  //   cost: "₹1,200",
+  //   description:
+  //     "A packed workshop where 20 coffee enthusiasts learned the basics of V60 and Chemex brewing methods.",
+  //   image: magazineImage1,
+  //   isPast: true,
+  // },
 ];
 
 const Events = () => {
@@ -331,7 +282,7 @@ const Events = () => {
                           {selectedEvent.date} @ {selectedEvent.endTime}
                         </span>
                       </div>
-                      <div>
+                      {/* <div>
                         <span
                           style={{
                             fontSize: "0.95rem",
@@ -351,7 +302,7 @@ const Events = () => {
                         >
                           {selectedEvent.cost}
                         </span>
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* ORGANIZER Column */}
@@ -645,9 +596,7 @@ const Events = () => {
                       initial={false}
                       animate={{
                         color:
-                          activeEventTab === tab.key
-                            ? "#fff"
-                            : "var(--text)",
+                          activeEventTab === tab.key ? "#fff" : "var(--text)",
                       }}
                       onClick={() => setActiveEventTab(tab.key)}
                       style={{
@@ -688,106 +637,272 @@ const Events = () => {
 
             {/* UPCOMING EVENTS TAB (with precise Date Filter) */}
             <AnimatePresence mode="wait">
-            {activeEventTab === "upcoming" && (
-              <motion.div
-                key="upcoming-tab"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "30px",
-                    padding: "20px",
-                    gap: "15px",
-                    backgroundColor: "#fff",
-                    borderRadius: "8px",
-                    boxShadow: "0 2px 10px rgba(0,0,0,0.03)",
-                  }}
+              {activeEventTab === "upcoming" && (
+                <motion.div
+                  key="upcoming-tab"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <h3
-                    style={{
-                      margin: "0",
-                      fontSize: "1.4rem",
-                      color: "#1a1a1a",
-                    }}
-                  >
-                    Upcoming Schedule
-                  </h3>
-
-                  {/* The true Date Filter input */}
                   <div
                     style={{
                       display: "flex",
                       flexWrap: "wrap",
+                      justifyContent: "space-between",
                       alignItems: "center",
-                      gap: "10px",
+                      marginBottom: "30px",
+                      padding: "20px",
+                      gap: "15px",
+                      backgroundColor: "#fff",
+                      borderRadius: "8px",
+                      boxShadow: "0 2px 10px rgba(0,0,0,0.03)",
                     }}
                   >
-                    <label
+                    <h3
                       style={{
-                        fontWeight: "600",
-                        color: "#666",
-                        fontSize: "0.95rem",
-                        whiteSpace: "nowrap",
+                        margin: "0",
+                        fontSize: "1.4rem",
+                        color: "#1a1a1a",
                       }}
                     >
-                      Filter by Date:
-                    </label>
-                    <input
-                      type="date"
-                      value={upcomingDateFilter}
-                      onChange={(e) => setUpcomingDateFilter(e.target.value)}
+                      Upcoming Schedule
+                    </h3>
+
+                    {/* The true Date Filter input */}
+                    <div
                       style={{
-                        padding: "8px 12px",
-                        border: "1px solid #ccc",
-                        borderRadius: "4px",
-                        outline: "none",
-                        fontSize: "1rem",
-                        color: "#333",
-                        cursor: "pointer",
+                        display: "flex",
+                        flexWrap: "wrap",
+                        alignItems: "center",
+                        gap: "10px",
                       }}
-                    />
-                    {upcomingDateFilter && (
-                      <button
-                        onClick={() => setUpcomingDateFilter("")}
+                    >
+                      <label
                         style={{
-                          padding: "8px 16px",
-                          backgroundColor: "#f5f5f5",
-                          border: "1px solid #ddd",
-                          borderRadius: "4px",
-                          cursor: "pointer",
                           fontWeight: "600",
                           color: "#666",
+                          fontSize: "0.95rem",
+                          whiteSpace: "nowrap",
                         }}
                       >
-                        Clear
-                      </button>
-                    )}
+                        Filter by Date:
+                      </label>
+                      <input
+                        type="date"
+                        value={upcomingDateFilter}
+                        onChange={(e) => setUpcomingDateFilter(e.target.value)}
+                        style={{
+                          padding: "8px 12px",
+                          border: "1px solid #ccc",
+                          borderRadius: "4px",
+                          outline: "none",
+                          fontSize: "1rem",
+                          color: "#333",
+                          cursor: "pointer",
+                        }}
+                      />
+                      {upcomingDateFilter && (
+                        <button
+                          onClick={() => setUpcomingDateFilter("")}
+                          style={{
+                            padding: "8px 16px",
+                            backgroundColor: "#f5f5f5",
+                            border: "1px solid #ddd",
+                            borderRadius: "4px",
+                            cursor: "pointer",
+                            fontWeight: "600",
+                            color: "#666",
+                          }}
+                        >
+                          Clear
+                        </button>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                {filteredUpcomingEvents.length > 0 ? (
+                  {filteredUpcomingEvents.length > 0 ? (
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(3, minmax(0, 350px))",
+                        gap: "30px",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {filteredUpcomingEvents.map((evt, idx) => (
+                        <motion.div
+                          key={evt.id}
+                          className="menu-card"
+                          initial={{ y: 30, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{
+                            duration: 0.4,
+                            delay: idx * 0.1,
+                            ease: "easeOut",
+                          }}
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            backgroundColor: "#fff",
+                            borderRadius: "8px",
+                            overflow: "hidden",
+                            boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+                          }}
+                        >
+                          <div
+                            style={{
+                              overflow: "hidden",
+                              backgroundColor: "#f5f0eb",
+                            }}
+                          >
+                            <img
+                              src={evt.image}
+                              alt={evt.title}
+                              style={{
+                                width: "100%",
+                                height: "auto",
+                                display: "block",
+                                transition: "transform 0.3s ease",
+                              }}
+                              onMouseEnter={(e) =>
+                                (e.currentTarget.style.transform =
+                                  "scale(1.05)")
+                              }
+                              onMouseLeave={(e) =>
+                                (e.currentTarget.style.transform = "scale(1)")
+                              }
+                            />
+                          </div>
+                          <div
+                            style={{
+                              padding: "24px",
+                              flexGrow: 1,
+                              display: "flex",
+                              flexDirection: "column",
+                            }}
+                          >
+                            <div
+                              style={{
+                                color: "#C5A480",
+                                fontWeight: "600",
+                                fontSize: "0.9rem",
+                                marginBottom: "8px",
+                                textTransform: "uppercase",
+                                letterSpacing: "1px",
+                              }}
+                            >
+                              {evt.date} • {evt.time}
+                            </div>
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "flex-start",
+                                marginBottom: "12px",
+                              }}
+                            >
+                              <h3
+                                style={{
+                                  fontSize: "1.4rem",
+                                  margin: "0",
+                                  color: "#1a1a1a",
+                                }}
+                              >
+                                {evt.title}
+                              </h3>
+                              {/* <span
+                                style={{
+                                  fontWeight: "bold",
+                                  color: "var(--primary)",
+                                  fontSize: "1.2rem",
+                                }}
+                              >
+                                {evt.cost}
+                              </span> */}
+                            </div>
+                            <p
+                              style={{
+                                color: "#666",
+                                lineHeight: "1.6",
+                                marginBottom: "20px",
+                                flexGrow: 1,
+                              }}
+                            >
+                              {evt.description}
+                            </p>
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => setSelectedEvent(evt)}
+                              style={{
+                                width: "100%",
+                                padding: "12px",
+                                fontSize: "0.95rem",
+                              }}
+                            >
+                              Reserve Spot
+                            </button>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        textAlign: "center",
+                        padding: "60px 20px",
+                        backgroundColor: "#fff",
+                        borderRadius: "8px",
+                      }}
+                    >
+                      <h3 style={{ color: "#888", marginBottom: "10px" }}>
+                        No Events Found
+                      </h3>
+                      <p style={{ color: "#999" }}>
+                        There are no upcoming events scheduled for the date you
+                        selected.
+                      </p>
+                      <button
+                        onClick={() => setUpcomingDateFilter("")}
+                        className="btn btn-primary"
+                        style={{ marginTop: "15px" }}
+                      >
+                        Clear Filter
+                      </button>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
+              {/* PREVIOUS EVENTS TAB */}
+              {activeEventTab === "previous" && (
+                <motion.div
+                  key="previous-tab"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
                   <div
                     style={{
                       display: "grid",
                       gridTemplateColumns:
                         "repeat(auto-fit, minmax(300px, 1fr))",
                       gap: "30px",
+                      marginTop: "30px",
                     }}
                   >
-                    {filteredUpcomingEvents.map((evt, idx) => (
+                    {previousEventsData.map((evt, idx) => (
                       <motion.div
                         key={evt.id}
                         className="menu-card"
                         initial={{ y: 30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
+                        transition={{
+                          duration: 0.4,
+                          delay: idx * 0.1,
+                          ease: "easeOut",
+                        }}
                         style={{
                           display: "flex",
                           flexDirection: "column",
@@ -795,6 +910,7 @@ const Events = () => {
                           borderRadius: "8px",
                           overflow: "hidden",
                           boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+                          opacity: 0.85,
                         }}
                       >
                         <div style={{ height: "220px", overflow: "hidden" }}>
@@ -805,14 +921,17 @@ const Events = () => {
                               width: "100%",
                               height: "100%",
                               objectFit: "cover",
-                              transition: "transform 0.3s ease",
+                              filter: "grayscale(30%)",
+                              transition: "all 0.3s ease",
                             }}
-                            onMouseEnter={(e) =>
-                              (e.currentTarget.style.transform = "scale(1.05)")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.currentTarget.style.transform = "scale(1)")
-                            }
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = "scale(1.05)";
+                              e.currentTarget.style.filter = "grayscale(0%)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = "scale(1)";
+                              e.currentTarget.style.filter = "grayscale(30%)";
+                            }}
                           />
                         </div>
                         <div
@@ -825,7 +944,7 @@ const Events = () => {
                         >
                           <div
                             style={{
-                              color: "#C5A480",
+                              color: "#888",
                               fontWeight: "600",
                               fontSize: "0.9rem",
                               marginBottom: "8px",
@@ -852,15 +971,15 @@ const Events = () => {
                             >
                               {evt.title}
                             </h3>
-                            <span
+                            {/* <span
                               style={{
                                 fontWeight: "bold",
-                                color: "var(--primary)",
+                                color: "#888",
                                 fontSize: "1.2rem",
                               }}
                             >
                               {evt.cost}
-                            </span>
+                            </span> */}
                           </div>
                           <p
                             style={{
@@ -873,181 +992,26 @@ const Events = () => {
                             {evt.description}
                           </p>
                           <button
-                            className="btn btn-primary"
+                            className="btn"
                             onClick={() => setSelectedEvent(evt)}
                             style={{
                               width: "100%",
                               padding: "12px",
                               fontSize: "0.95rem",
+                              backgroundColor: "#F5F5F5",
+                              color: "#888",
+                              border: "none",
+                              fontWeight: "600",
                             }}
                           >
-                            Reserve Spot
+                            View Details
                           </button>
                         </div>
                       </motion.div>
                     ))}
                   </div>
-                ) : (
-                  <div
-                    style={{
-                      textAlign: "center",
-                      padding: "60px 20px",
-                      backgroundColor: "#fff",
-                      borderRadius: "8px",
-                    }}
-                  >
-                    <h3 style={{ color: "#888", marginBottom: "10px" }}>
-                      No Events Found
-                    </h3>
-                    <p style={{ color: "#999" }}>
-                      There are no upcoming events scheduled for the date you
-                      selected.
-                    </p>
-                    <button
-                      onClick={() => setUpcomingDateFilter("")}
-                      className="btn btn-primary"
-                      style={{ marginTop: "15px" }}
-                    >
-                      Clear Filter
-                    </button>
-                  </div>
-                )}
-              </motion.div>
-            )}
-
-            {/* PREVIOUS EVENTS TAB */}
-            {activeEventTab === "previous" && (
-              <motion.div
-                key="previous-tab"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                    gap: "30px",
-                    marginTop: "30px",
-                  }}
-                >
-                  {previousEventsData.map((evt, idx) => (
-                    <motion.div
-                      key={evt.id}
-                      className="menu-card"
-                      initial={{ y: 30, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        backgroundColor: "#fff",
-                        borderRadius: "8px",
-                        overflow: "hidden",
-                        boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
-                        opacity: 0.85,
-                      }}
-                    >
-                      <div style={{ height: "220px", overflow: "hidden" }}>
-                        <img
-                          src={evt.image}
-                          alt={evt.title}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                            filter: "grayscale(30%)",
-                            transition: "all 0.3s ease",
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "scale(1.05)";
-                            e.currentTarget.style.filter = "grayscale(0%)";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "scale(1)";
-                            e.currentTarget.style.filter = "grayscale(30%)";
-                          }}
-                        />
-                      </div>
-                      <div
-                        style={{
-                          padding: "24px",
-                          flexGrow: 1,
-                          display: "flex",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <div
-                          style={{
-                            color: "#888",
-                            fontWeight: "600",
-                            fontSize: "0.9rem",
-                            marginBottom: "8px",
-                            textTransform: "uppercase",
-                            letterSpacing: "1px",
-                          }}
-                        >
-                          {evt.date} • {evt.time}
-                        </div>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "flex-start",
-                            marginBottom: "12px",
-                          }}
-                        >
-                          <h3
-                            style={{
-                              fontSize: "1.4rem",
-                              margin: "0",
-                              color: "#1a1a1a",
-                            }}
-                          >
-                            {evt.title}
-                          </h3>
-                          <span
-                            style={{
-                              fontWeight: "bold",
-                              color: "#888",
-                              fontSize: "1.2rem",
-                            }}
-                          >
-                            {evt.cost}
-                          </span>
-                        </div>
-                        <p
-                          style={{
-                            color: "#666",
-                            lineHeight: "1.6",
-                            marginBottom: "20px",
-                            flexGrow: 1,
-                          }}
-                        >
-                          {evt.description}
-                        </p>
-                        <button
-                          className="btn"
-                          onClick={() => setSelectedEvent(evt)}
-                          style={{
-                            width: "100%",
-                            padding: "12px",
-                            fontSize: "0.95rem",
-                            backgroundColor: "#F5F5F5",
-                            color: "#888",
-                            border: "none",
-                            fontWeight: "600",
-                          }}
-                        >
-                          View Details
-                        </button>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
         </section>
