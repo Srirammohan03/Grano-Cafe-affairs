@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { AnimatePresence } from "motion/react";
+import * as motion from "motion/react-client";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import CTASection from "../components/CTASection";
@@ -43,7 +45,7 @@ const blogPostsData: BlogPost[] = [
         Coffee is often associated with rushing—a quick jolt to kickstart the
         day. However, at Grano Coffee Affairs, we believe that the true essence
         of coffee is unlocked when we slow down. The art of slow brewing is not
-        just a method; it’s a philosophy.
+        just a method; it's a philosophy.
       </p>,
       <p key="2">
         When you employ methods like the classic V60 pour-over or the elegant
@@ -73,7 +75,7 @@ const blogPostsData: BlogPost[] = [
   },
   {
     id: 2,
-    title: "Why Jubilee Hills is Hyderabad’s True Coffee Haven",
+    title: "Why Jubilee Hills is Hyderabad's True Coffee Haven",
     date: "March 02, 2026",
     category: "Community",
     readTime: "4 min read",
@@ -89,7 +91,7 @@ const blogPostsData: BlogPost[] = [
         the undeniable coffee capital of Hyderabad.
       </p>,
       <p key="2">
-        What makes Jubilee Hills so perfect for cafe culture? It’s the abundance
+        What makes Jubilee Hills so perfect for cafe culture? It's the abundance
         of space, the sprawling trees, and the discerning community that values
         quality and ambiance. Instead of cramped, noisy commercial coffee
         chains, you find beautifully designed garden cafes like Grano that offer
@@ -137,7 +139,7 @@ const blogPostsData: BlogPost[] = [
         <strong>Medium Roasts:</strong> This is the sweet spot for many coffee
         drinkers. Medium roasts balance the original flavor of the bean with the
         deeper, caramelized flavors that develop during the roasting process.
-        It’s smooth, balanced, and perfect for a classic drip coffee.
+        It's smooth, balanced, and perfect for a classic drip coffee.
       </p>,
       <p key="4">
         <strong>Dark Roasts:</strong> Dark, oily, and robust. Dark roasts are
@@ -235,169 +237,427 @@ const blogPostsData: BlogPost[] = [
   },
 ];
 
+// All unique categories
+const allCategories = ["All", ...Array.from(new Set(blogPostsData.map((p) => p.category)))];
+
+// Mobile detection hook
+const useIsMobile = (breakpoint = 768) => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= breakpoint);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [breakpoint]);
+  return isMobile;
+};
+
+// ─── Animated Blog Card Component ───
+const BlogCard = ({
+  post,
+  index,
+  onSelect,
+  layout = "standard",
+}: {
+  post: BlogPost;
+  index: number;
+  onSelect: (p: BlogPost) => void;
+  layout?: "featured" | "standard";
+}) => {
+  const isMobile = useIsMobile();
+  const isFeatured = layout === "featured" && !isMobile;
+
+  return (
+    <motion.div
+      layoutId={`blog-card-${post.id}`}
+      initial={{ y: 40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -20, opacity: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+      onClick={() => onSelect(post)}
+      style={{
+        backgroundColor: "#fff",
+        borderRadius: "16px",
+        overflow: "hidden",
+        boxShadow: "0 8px 30px rgba(0,0,0,0.04)",
+        display: "flex",
+        flexDirection: isFeatured ? "row" : "column",
+        cursor: "pointer",
+        position: "relative",
+        ...(isFeatured ? { gridColumn: "1 / -1" } : {}),
+      }}
+      whileHover={{
+        y: -8,
+        boxShadow: "0 24px 50px rgba(0,0,0,0.10)",
+        transition: { duration: 0.35 },
+      }}
+    >
+      {/* Image */}
+      <div
+        style={{
+          height: isFeatured ? "100%" : isMobile ? "200px" : "240px",
+          minHeight: isFeatured ? "340px" : undefined,
+          width: isFeatured ? "55%" : "100%",
+          overflow: "hidden",
+          position: "relative",
+          flexShrink: 0,
+        }}
+      >
+        <motion.img
+          src={post.image}
+          alt={post.title}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+          whileHover={{ scale: 1.06 }}
+          transition={{ duration: 0.6 }}
+        />
+        {/* Category Pill */}
+        <div
+          style={{
+            position: "absolute",
+            top: "20px",
+            left: "20px",
+            background: "rgba(255,255,255,0.95)",
+            backdropFilter: "blur(8px)",
+            padding: "6px 16px",
+            borderRadius: "30px",
+            fontSize: "0.72rem",
+            fontWeight: "bold",
+            textTransform: "uppercase",
+            letterSpacing: "1.2px",
+            color: "var(--primary)",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+          }}
+        >
+          {post.category}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div
+        style={{
+          padding: isMobile ? "22px 20px" : isFeatured ? "40px 40px" : "28px 28px",
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: isFeatured ? "center" : "flex-start",
+        }}
+      >
+        {/* Meta */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            color: "#999",
+            fontSize: "0.8rem",
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+            marginBottom: "14px",
+          }}
+        >
+          <span>{post.date}</span>
+          <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#ccc", display: "inline-block" }}></span>
+          <span>{post.readTime}</span>
+        </div>
+
+        <h3
+          style={{
+            fontSize: isMobile ? "1.15rem" : isFeatured ? "1.9rem" : "1.35rem",
+            marginBottom: "14px",
+            color: "#1a1412",
+            lineHeight: "1.3",
+            fontWeight: 700,
+          }}
+        >
+          {post.title}
+        </h3>
+
+        <p
+          style={{
+            color: "#666",
+            lineHeight: "1.75",
+            marginBottom: isFeatured ? "28px" : "20px",
+            flexGrow: 1,
+            fontSize: isFeatured ? "1.05rem" : "0.95rem",
+          }}
+        >
+          {post.excerpt}
+        </p>
+
+        {/* Author + Read More */}
+        <div
+          style={{
+            borderTop: "1px solid #f0f0f0",
+            paddingTop: "18px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div
+              style={{
+                width: "34px",
+                height: "34px",
+                borderRadius: "50%",
+                background: "linear-gradient(135deg, var(--primary), #a67c52)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: "0.75rem",
+              }}
+            >
+              {post.author.charAt(0)}
+            </div>
+            <span style={{ fontSize: "0.85rem", color: "#555", fontWeight: 500 }}>
+              {post.author}
+            </span>
+          </div>
+          <motion.span
+            style={{
+              fontWeight: 700,
+              fontSize: "0.82rem",
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+              color: "var(--primary)",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+            }}
+            whileHover={{ x: 4 }}
+          >
+            Read
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+          </motion.span>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// ─── Article Reader View (Inner Page) ───
+const ArticleReader = ({
+  post,
+  onClose,
+}: {
+  post: BlogPost;
+  onClose: () => void;
+}) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <>
+      <Header />
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
+        style={{
+          paddingTop: "120px",
+          backgroundColor: "#fff",
+          minHeight: "100vh",
+        }}
+      >
+        {/* Hero Image with Parallax feel */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ width: "100%", height: "55vh", position: "relative", overflow: "hidden" }}
+        >
+          <img
+            src={post.image}
+            alt={post.title}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.8) 100%)",
+            }}
+          />
+
+          <motion.div
+            className="container"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            style={{
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+              right: "0",
+              paddingBottom: "50px",
+              color: "#fff",
+              zIndex: 2,
+            }}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              style={{
+                display: "inline-block",
+                backgroundColor: "var(--primary)",
+                color: "#fff",
+                padding: "6px 16px",
+                fontSize: "0.78rem",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+                letterSpacing: "1.5px",
+                borderRadius: "30px",
+                marginBottom: "20px",
+              }}
+            >
+              {post.category}
+            </motion.div>
+            <h1
+              style={{
+                fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                lineHeight: "1.2",
+                marginBottom: "20px",
+                maxWidth: "900px",
+                color: "#ffffff",
+              }}
+            >
+              {post.title}
+            </h1>
+            <div
+              style={{
+                display: "flex",
+                gap: "20px",
+                fontSize: "1rem",
+                color: "#e0e0e0",
+                alignItems: "center",
+              }}
+            >
+              <span style={{ fontWeight: "600", color: "#fff" }}>
+                By {post.author}
+              </span>
+              <span>•</span>
+              <span>{post.date}</span>
+              <span>•</span>
+              <span>{post.readTime}</span>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        <div
+          className="container"
+          style={{ maxWidth: "800px", padding: "60px 20px" }}
+        >
+          {/* Back Navigation */}
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            style={{
+              marginBottom: "50px",
+              paddingBottom: "20px",
+              borderBottom: "1px solid #EBEBEB",
+            }}
+          >
+            <button
+              onClick={onClose}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "var(--primary)",
+                fontWeight: "600",
+                fontSize: "1.05rem",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "0",
+              }}
+            >
+              ← Back to All Articles
+            </button>
+          </motion.div>
+
+          {/* Article Content with staggered reveal */}
+          <article
+            ref={contentRef}
+            style={{ fontSize: "1.2rem", lineHeight: "1.9", color: "#333" }}
+          >
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              style={{
+                fontSize: "1.35rem",
+                color: "#666",
+                fontStyle: "italic",
+                marginBottom: "40px",
+                lineHeight: "1.6",
+              }}
+            >
+              {post.excerpt}
+            </motion.p>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "25px",
+              }}
+            >
+              {post.content.map((block, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ y: 25, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.7 + i * 0.1, duration: 0.5 }}
+                >
+                  {block}
+                </motion.div>
+              ))}
+            </div>
+          </article>
+        </div>
+      </motion.main>
+      <Footer />
+      <BackToTop />
+    </>
+  );
+};
+
+// ─── Main Blog Component ───
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [activeCategory, setActiveCategory] = useState("All");
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [selectedPost]);
 
-  // -- TRUE INNER PAGE FOR READING A FULL BLOG POST --
+  const filteredPosts =
+    activeCategory === "All"
+      ? blogPostsData
+      : blogPostsData.filter((p) => p.category === activeCategory);
+
+  // -- ARTICLE READER VIEW --
   if (selectedPost) {
     return (
-      <>
-        <Header />
-        <main
-          style={{
-            paddingTop: "120px",
-            backgroundColor: "#fff",
-            minHeight: "100vh",
-          }}
-        >
-          {/* Hero Section of Article */}
-          <div style={{ width: "100%", height: "55vh", position: "relative" }}>
-            <img
-              src={selectedPost.image}
-              alt={selectedPost.title}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                background:
-                  "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%)",
-              }}
-            />
-
-            <div
-              className="container"
-              style={{
-                position: "absolute",
-                bottom: "0",
-                left: "0",
-                right: "0",
-                paddingBottom: "50px",
-                color: "#fff",
-                zIndex: 2,
-              }}
-            >
-              <div
-                style={{
-                  display: "inline-block",
-                  backgroundColor: "var(--primary)",
-                  color: "#fff",
-                  padding: "5px 12px",
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                  textTransform: "uppercase",
-                  letterSpacing: "1px",
-                  borderRadius: "4px",
-                  marginBottom: "20px",
-                }}
-              >
-                {selectedPost.category}
-              </div>
-              <h1
-                style={{
-                  fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                  lineHeight: "1.2",
-                  marginBottom: "20px",
-                  maxWidth: "900px",
-                  color: "#ffffff",
-                }}
-              >
-                {selectedPost.title}
-              </h1>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "20px",
-                  fontSize: "1rem",
-                  color: "#e0e0e0",
-                  alignItems: "center",
-                }}
-              >
-                <span style={{ fontWeight: "600", color: "#fff" }}>
-                  By {selectedPost.author}
-                </span>
-                <span>•</span>
-                <span>{selectedPost.date}</span>
-                <span>•</span>
-                <span>{selectedPost.readTime}</span>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="container"
-            style={{ maxWidth: "800px", padding: "60px 20px" }}
-          >
-            {/* Back Navigation Bar */}
-            <div
-              style={{
-                marginBottom: "50px",
-                paddingBottom: "20px",
-                borderBottom: "1px solid #EBEBEB",
-              }}
-            >
-              <button
-                onClick={() => setSelectedPost(null)}
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  color: "var(--primary)",
-                  fontWeight: "600",
-                  fontSize: "1.05rem",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "0",
-                }}
-              >
-                ← Back to All Articles
-              </button>
-            </div>
-
-            {/* Article Content */}
-            <article
-              style={{ fontSize: "1.2rem", lineHeight: "1.9", color: "#333" }}
-            >
-              <p
-                style={{
-                  fontSize: "1.35rem",
-                  color: "#666",
-                  fontStyle: "italic",
-                  marginBottom: "40px",
-                  lineHeight: "1.6",
-                }}
-              >
-                {selectedPost.excerpt}
-              </p>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "25px",
-                }}
-              >
-                {selectedPost.content}
-              </div>
-            </article>
-          </div>
-        </main>
-        <Footer />
-        <BackToTop />
-      </>
+      <ArticleReader post={selectedPost} onClose={() => setSelectedPost(null)} />
     );
   }
 
-  // -- STANDARD BLOG INDEX VIEW --
+  // -- BLOG INDEX VIEW --
   return (
     <>
       <Header />
@@ -413,179 +673,142 @@ const Blog = () => {
 
         <section className="section" style={{ backgroundColor: "#FAF8F5" }}>
           <div className="container">
-            <div className="text-center mb-5 fade-in visible">
-              <span className="subheading" style={{ justifyContent: "center" }}>
+            {/* Header + Animated Category Filter */}
+            <div className="text-center mb-5">
+              <motion.span
+                className="subheading"
+                style={{ justifyContent: "center" }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
                 Latest Articles
-              </span>
-              <h2>READ OUR STORIES</h2>
-            </div>
+              </motion.span>
+              <motion.h2
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                READ OUR STORIES
+              </motion.h2>
 
-            {/* Blog Grid Layout */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-                gap: "40px",
-                marginTop: "50px",
-                animation: "fadeIn 0.5s ease",
-              }}
-            >
-              {blogPostsData.map((post, idx) => (
-                <div
-                  key={post.id}
-                  className="fade-in visible"
+              {/* Category Filter Tabs with shared layout pill animation */}
+              <motion.nav
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "30px",
+                }}
+              >
+                <ul
                   style={{
-                    backgroundColor: "#fff",
-                    borderRadius: "12px",
-                    overflow: "hidden",
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
-                    transition: "transform 0.4s ease, box-shadow 0.4s ease",
+                    listStyle: "none",
+                    padding: "4px",
+                    margin: 0,
                     display: "flex",
-                    flexDirection: "column",
-                    cursor: "pointer",
-                    transitionDelay: `${idx * 0.1}s`,
-                  }}
-                  onClick={() => setSelectedPost(post)}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-10px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 20px 40px rgba(0,0,0,0.08)";
-                    const img = e.currentTarget.querySelector(
-                      ".blog-card-img",
-                    ) as HTMLElement;
-                    if (img) img.style.transform = "scale(1.05)";
-                    const btn = e.currentTarget.querySelector(
-                      ".read-more-text",
-                    ) as HTMLElement;
-                    if (btn) btn.style.letterSpacing = "2px";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow =
-                      "0 10px 30px rgba(0,0,0,0.03)";
-                    const img = e.currentTarget.querySelector(
-                      ".blog-card-img",
-                    ) as HTMLElement;
-                    if (img) img.style.transform = "scale(1)";
-                    const btn = e.currentTarget.querySelector(
-                      ".read-more-text",
-                    ) as HTMLElement;
-                    if (btn) btn.style.letterSpacing = "1px";
+                    flexWrap: "wrap",
+                    gap: "3px",
+                    backgroundColor: "#fff",
+                    borderRadius: "14px",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                    border: "1px solid #EBEBEB",
+                    justifyContent: "center",
+                    maxWidth: "100%",
                   }}
                 >
-                  <div
-                    style={{
-                      height: "240px",
-                      overflow: "hidden",
-                      position: "relative",
-                    }}
-                  >
-                    <img
-                      className="blog-card-img"
-                      src={post.image}
-                      alt={post.title}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        transition: "transform 0.5s ease",
+                  {allCategories.map((cat) => (
+                    <motion.li
+                      key={cat}
+                      initial={false}
+                      animate={{
+                        color: activeCategory === cat ? "#fff" : "#555",
                       }}
-                    />
-                    <div
+                      onClick={() => setActiveCategory(cat)}
                       style={{
-                        position: "absolute",
-                        top: "20px",
-                        left: "20px",
-                        backgroundColor: "#fff",
-                        padding: "6px 14px",
-                        borderRadius: "30px",
-                        fontSize: "0.75rem",
-                        fontWeight: "bold",
-                        textTransform: "uppercase",
-                        letterSpacing: "1px",
-                        color: "var(--primary)",
-                        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+                        position: "relative",
+                        padding: "8px 16px",
+                        cursor: "pointer",
+                        fontWeight: 600,
+                        fontSize: "0.78rem",
+                        letterSpacing: "0.3px",
+                        userSelect: "none",
+                        zIndex: 1,
+                        whiteSpace: "nowrap",
+                        transition: "color 0.3s ease",
+                        borderRadius: "10px",
                       }}
                     >
-                      {post.category}
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      padding: "30px",
-                      flexGrow: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        color: "#888",
-                        fontSize: "0.85rem",
-                        textTransform: "uppercase",
-                        letterSpacing: "1px",
-                        marginBottom: "15px",
-                      }}
-                    >
-                      <span>{post.date}</span>
-                      <span>{post.readTime}</span>
-                    </div>
-
-                    <h3
-                      style={{
-                        fontSize: "1.5rem",
-                        marginBottom: "15px",
-                        color: "#1a1a1a",
-                        lineHeight: "1.4",
-                      }}
-                    >
-                      {post.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        color: "#666",
-                        lineHeight: "1.7",
-                        marginBottom: "25px",
-                        flexGrow: 1,
-                      }}
-                    >
-                      {post.excerpt}
-                    </p>
-
-                    <div
-                      style={{
-                        marginTop: "auto",
-                        borderTop: "1px solid #F0F0F0",
-                        paddingTop: "20px",
-                        display: "flex",
-                        alignItems: "center",
-                        color: "var(--primary)",
-                      }}
-                    >
-                      <span
-                        className="read-more-text"
-                        style={{
-                          fontWeight: "700",
-                          fontSize: "0.9rem",
-                          textTransform: "uppercase",
-                          letterSpacing: "1px",
-                          transition: "letter-spacing 0.3s ease",
-                        }}
-                      >
-                        Read Article
-                      </span>
-                      <span style={{ marginLeft: "8px", fontSize: "1.2rem" }}>
-                        →
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                      {cat}
+                      {activeCategory === cat && (
+                        <motion.div
+                          layoutId="blog-cat-pill"
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            backgroundColor: "var(--primary)",
+                            borderRadius: "10px",
+                            zIndex: -1,
+                          }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 35,
+                          }}
+                        />
+                      )}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.nav>
             </div>
+
+            {/* Blog Grid with AnimatePresence */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -15, opacity: 0 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
+                  gap: "28px",
+                  marginTop: "40px",
+                }}
+              >
+                {filteredPosts.map((post, idx) => (
+                  <BlogCard
+                    key={post.id}
+                    post={post}
+                    index={idx}
+                    onSelect={setSelectedPost}
+                    layout={idx === 0 && activeCategory === "All" ? "featured" : "standard"}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Empty State */}
+            {filteredPosts.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                style={{
+                  textAlign: "center",
+                  padding: "80px 20px",
+                  color: "#999",
+                }}
+              >
+                <h3 style={{ fontSize: "1.4rem", marginBottom: "10px" }}>
+                  No articles in this category yet
+                </h3>
+                <p>Check back soon — we're always brewing new stories.</p>
+              </motion.div>
+            )}
           </div>
         </section>
 

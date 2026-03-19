@@ -1,4 +1,6 @@
 import { useEffect, useState, FormEvent } from "react";
+import { AnimatePresence } from "motion/react";
+import * as motion from "motion/react-client";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import CTASection from "../components/CTASection";
@@ -612,66 +614,88 @@ const Events = () => {
               </span>
               <h2>EVENTS AT GRANO</h2>
 
-              {/* Event Tabs */}
-              <div
+              {/* Animated Event Tabs */}
+              <nav
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  gap: "15px",
                   marginTop: "30px",
-                  flexWrap: "wrap",
                 }}
               >
-                <button
-                  onClick={() => setActiveEventTab("upcoming")}
+                <ul
                   style={{
-                    padding: "10px 24px",
-                    backgroundColor:
-                      activeEventTab === "upcoming"
-                        ? "var(--primary)"
-                        : "transparent",
-                    color:
-                      activeEventTab === "upcoming" ? "#fff" : "var(--text)",
-                    border:
-                      activeEventTab === "upcoming"
-                        ? "1px solid var(--primary)"
-                        : "1px solid #EBEBEB",
-                    borderRadius: "30px",
-                    fontWeight: "600",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                    display: "flex",
+                    gap: "0",
+                    backgroundColor: "#fff",
+                    borderRadius: "50px",
+                    overflow: "hidden",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                    border: "1px solid #EBEBEB",
                   }}
                 >
-                  Upcoming Events
-                </button>
-                <button
-                  onClick={() => setActiveEventTab("previous")}
-                  style={{
-                    padding: "10px 24px",
-                    backgroundColor:
-                      activeEventTab === "previous"
-                        ? "var(--primary)"
-                        : "transparent",
-                    color:
-                      activeEventTab === "previous" ? "#fff" : "var(--text)",
-                    border:
-                      activeEventTab === "previous"
-                        ? "1px solid var(--primary)"
-                        : "1px solid #EBEBEB",
-                    borderRadius: "30px",
-                    fontWeight: "600",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  Previous Events
-                </button>
-              </div>
+                  {[
+                    { key: "upcoming" as const, label: "Upcoming Events" },
+                    { key: "previous" as const, label: "Previous Events" },
+                  ].map((tab) => (
+                    <motion.li
+                      key={tab.key}
+                      initial={false}
+                      animate={{
+                        color:
+                          activeEventTab === tab.key
+                            ? "#fff"
+                            : "var(--text)",
+                      }}
+                      onClick={() => setActiveEventTab(tab.key)}
+                      style={{
+                        position: "relative",
+                        padding: "12px 32px",
+                        cursor: "pointer",
+                        fontWeight: 600,
+                        fontSize: "0.95rem",
+                        letterSpacing: "0.4px",
+                        userSelect: "none",
+                        zIndex: 1,
+                        transition: "color 0.3s ease",
+                      }}
+                    >
+                      {tab.label}
+                      {activeEventTab === tab.key && (
+                        <motion.div
+                          layoutId="event-tab-pill"
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            backgroundColor: "var(--primary)",
+                            borderRadius: "50px",
+                            zIndex: -1,
+                          }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 35,
+                          }}
+                        />
+                      )}
+                    </motion.li>
+                  ))}
+                </ul>
+              </nav>
             </div>
 
             {/* UPCOMING EVENTS TAB (with precise Date Filter) */}
+            <AnimatePresence mode="wait">
             {activeEventTab === "upcoming" && (
-              <>
+              <motion.div
+                key="upcoming-tab"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
                 <div
                   style={{
                     display: "flex",
@@ -755,15 +779,16 @@ const Events = () => {
                       gridTemplateColumns:
                         "repeat(auto-fit, minmax(300px, 1fr))",
                       gap: "30px",
-                      animation: "fadeIn 0.5s ease",
                     }}
                   >
                     {filteredUpcomingEvents.map((evt, idx) => (
-                      <div
+                      <motion.div
                         key={evt.id}
-                        className="menu-card fade-in visible"
+                        className="menu-card"
+                        initial={{ y: 30, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
                         style={{
-                          transitionDelay: `${(idx + 1) * 0.1}s`,
                           display: "flex",
                           flexDirection: "column",
                           backgroundColor: "#fff",
@@ -859,7 +884,7 @@ const Events = () => {
                             Reserve Spot
                           </button>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 ) : (
@@ -887,133 +912,143 @@ const Events = () => {
                     </button>
                   </div>
                 )}
-              </>
+              </motion.div>
             )}
 
             {/* PREVIOUS EVENTS TAB */}
             {activeEventTab === "previous" && (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                  gap: "30px",
-                  marginTop: "30px",
-                  animation: "fadeIn 0.5s ease",
-                }}
+              <motion.div
+                key="previous-tab"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                {previousEventsData.map((evt, idx) => (
-                  <div
-                    key={evt.id}
-                    className="menu-card fade-in visible"
-                    style={{
-                      transitionDelay: `${(idx + 1) * 0.1}s`,
-                      display: "flex",
-                      flexDirection: "column",
-                      backgroundColor: "#fff",
-                      borderRadius: "8px",
-                      overflow: "hidden",
-                      boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
-                      opacity: 0.85,
-                    }}
-                  >
-                    <div style={{ height: "220px", overflow: "hidden" }}>
-                      <img
-                        src={evt.image}
-                        alt={evt.title}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          filter: "grayscale(30%)",
-                          transition: "all 0.3s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = "scale(1.05)";
-                          e.currentTarget.style.filter = "grayscale(0%)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = "scale(1)";
-                          e.currentTarget.style.filter = "grayscale(30%)";
-                        }}
-                      />
-                    </div>
-                    <div
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                    gap: "30px",
+                    marginTop: "30px",
+                  }}
+                >
+                  {previousEventsData.map((evt, idx) => (
+                    <motion.div
+                      key={evt.id}
+                      className="menu-card"
+                      initial={{ y: 30, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
                       style={{
-                        padding: "24px",
-                        flexGrow: 1,
                         display: "flex",
                         flexDirection: "column",
+                        backgroundColor: "#fff",
+                        borderRadius: "8px",
+                        overflow: "hidden",
+                        boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+                        opacity: 0.85,
                       }}
                     >
-                      <div
-                        style={{
-                          color: "#888",
-                          fontWeight: "600",
-                          fontSize: "0.9rem",
-                          marginBottom: "8px",
-                          textTransform: "uppercase",
-                          letterSpacing: "1px",
-                        }}
-                      >
-                        {evt.date} • {evt.time}
+                      <div style={{ height: "220px", overflow: "hidden" }}>
+                        <img
+                          src={evt.image}
+                          alt={evt.title}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            filter: "grayscale(30%)",
+                            transition: "all 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "scale(1.05)";
+                            e.currentTarget.style.filter = "grayscale(0%)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "scale(1)";
+                            e.currentTarget.style.filter = "grayscale(30%)";
+                          }}
+                        />
                       </div>
                       <div
                         style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "flex-start",
-                          marginBottom: "12px",
-                        }}
-                      >
-                        <h3
-                          style={{
-                            fontSize: "1.4rem",
-                            margin: "0",
-                            color: "#1a1a1a",
-                          }}
-                        >
-                          {evt.title}
-                        </h3>
-                        <span
-                          style={{
-                            fontWeight: "bold",
-                            color: "#888",
-                            fontSize: "1.2rem",
-                          }}
-                        >
-                          {evt.cost}
-                        </span>
-                      </div>
-                      <p
-                        style={{
-                          color: "#666",
-                          lineHeight: "1.6",
-                          marginBottom: "20px",
+                          padding: "24px",
                           flexGrow: 1,
+                          display: "flex",
+                          flexDirection: "column",
                         }}
                       >
-                        {evt.description}
-                      </p>
-                      <button
-                        className="btn"
-                        onClick={() => setSelectedEvent(evt)}
-                        style={{
-                          width: "100%",
-                          padding: "12px",
-                          fontSize: "0.95rem",
-                          backgroundColor: "#F5F5F5",
-                          color: "#888",
-                          border: "none",
-                          fontWeight: "600",
-                        }}
-                      >
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                        <div
+                          style={{
+                            color: "#888",
+                            fontWeight: "600",
+                            fontSize: "0.9rem",
+                            marginBottom: "8px",
+                            textTransform: "uppercase",
+                            letterSpacing: "1px",
+                          }}
+                        >
+                          {evt.date} • {evt.time}
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "flex-start",
+                            marginBottom: "12px",
+                          }}
+                        >
+                          <h3
+                            style={{
+                              fontSize: "1.4rem",
+                              margin: "0",
+                              color: "#1a1a1a",
+                            }}
+                          >
+                            {evt.title}
+                          </h3>
+                          <span
+                            style={{
+                              fontWeight: "bold",
+                              color: "#888",
+                              fontSize: "1.2rem",
+                            }}
+                          >
+                            {evt.cost}
+                          </span>
+                        </div>
+                        <p
+                          style={{
+                            color: "#666",
+                            lineHeight: "1.6",
+                            marginBottom: "20px",
+                            flexGrow: 1,
+                          }}
+                        >
+                          {evt.description}
+                        </p>
+                        <button
+                          className="btn"
+                          onClick={() => setSelectedEvent(evt)}
+                          style={{
+                            width: "100%",
+                            padding: "12px",
+                            fontSize: "0.95rem",
+                            backgroundColor: "#F5F5F5",
+                            color: "#888",
+                            border: "none",
+                            fontWeight: "600",
+                          }}
+                        >
+                          View Details
+                        </button>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             )}
+            </AnimatePresence>
           </div>
         </section>
 
