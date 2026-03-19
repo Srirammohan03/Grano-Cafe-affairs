@@ -48,10 +48,11 @@ const Header = () => {
 
   const navLinks = [
     { path: "/", label: "HOME" },
-    { path: "/menu", label: "MENU" },
     { path: "/about", label: "ABOUT" },
-    // { path: "/events", label: "EVENTS" },
+    { path: "/menu", label: "MENU" },
+    { path: "/events", label: "EVENTS" },
     { path: "/innews", label: "IN NEWS" },
+    { path: "/blog", label: "BLOG" },
 
     { path: "/contact", label: "CONTACT" },
   ];
@@ -115,7 +116,7 @@ const Header = () => {
 
                 {/* Desktop Left Links */}
                 <ul className="nav-links left">
-                  {navLinks.slice(0, 2).map((link) => (
+                  {navLinks.slice(0, 3).map((link) => (
                     <li key={link.path}>
                       <Link
                         to={link.path}
@@ -139,7 +140,7 @@ const Header = () => {
                 {/* Right Section (Links + Icons) */}
                 <div className="right-section">
                   <ul className="nav-links right">
-                    {navLinks.slice(2).map((link) => (
+                    {navLinks.slice(3).map((link) => (
                       <li key={link.path}>
                         <Link
                           to={link.path}
@@ -152,19 +153,6 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
-
-                  {/* <div className="nav-actions">
-                    <button
-                      className="action-btn desktop-search"
-                      aria-label="Search"
-                    >
-                      <Search size={22} />
-                    </button>
-                    <button className="action-btn cart-btn" aria-label="Cart">
-                      <ShoppingBag size={22} />
-                      <span className="cart-badge">0</span>
-                    </button>
-                  </div> */}
                 </div>
               </div>
             </div>

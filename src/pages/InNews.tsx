@@ -1,17 +1,15 @@
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
-import EventsSection from "../components/EventsSection";
-import TestimonialsSection from "../components/TestimonialsSection";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 import newsBg from "../assets/hero-coffee.jpg";
 import eventsOutdoor from "../assets/events-outdoor.jpg";
 import eventsCoffee from "../assets/events-coffee.jpg";
-import magazineImage1 from "../assets/category-coffee.jpg";
+import magazineImage1 from "../assets/2.jpg";
 import magazineImage2 from "../assets/1.png";
-import magazineImage3 from "../assets/why-choose-us.jpg";
+import magazineImage3 from "../assets/3.jpg";
 import "../styles/pages.css";
 
 const InNews = () => {
@@ -26,19 +24,21 @@ const InNews = () => {
         <Hero
           title="IN NEWS"
           subtitle="- Insights & Happenings -"
-          description="Stay updated with our latest media features, influencer reviews, and upcoming community events."
+          description="Stay updated with our latest media features, press mentions, and the buzz around town."
           showButtons={false}
           isPageHero={true}
           backgroundImage={newsBg}
         />
 
-        {/* News & Magazine Section - Redesigned */}
+        {/* Magazine Grid Section */}
         <section
           className="section"
           style={{
             backgroundColor: "#fff",
             position: "relative",
             overflow: "hidden",
+            paddingTop: "60px",
+            paddingBottom: "80px",
           }}
         >
           {/* Decorative background element */}
@@ -47,7 +47,7 @@ const InNews = () => {
               position: "absolute",
               top: "-5%",
               right: "-5%",
-              opacity: "0.03",
+              opacity: "0.02",
               pointerEvents: "none",
               zIndex: "0",
             }}
@@ -60,7 +60,7 @@ const InNews = () => {
                 color: "#000",
               }}
             >
-              NEWS
+              MEDIA
             </span>
           </div>
 
@@ -70,11 +70,11 @@ const InNews = () => {
           >
             <div
               className="split-layout"
-              style={{ marginBottom: "40px", alignItems: "flex-end" }}
+              style={{ marginBottom: "50px", alignItems: "flex-end" }}
             >
               <div className="split-content fade-in visible">
                 <span className="subheading">Latest Features</span>
-                <h2 style={{ margin: "0" }}>GRANO IN NEWS</h2>
+                <h2 style={{ margin: "0" }}>CAFE GRANO IN THE MEDIA</h2>
               </div>
               <div
                 className="split-content fade-in visible"
@@ -95,10 +95,16 @@ const InNews = () => {
               </div>
             </div>
 
-            <div className="grid-3" style={{ gap: "20px" }}>
-              {/* Featured Main News Article - Spans 2 columns on desktop */}
+            {/* TOP ROW: 1 Featured + 1 Medium */}
+            <div
+              className="grid-3"
+              style={{ gap: "20px", marginBottom: "20px" }}
+            >
+              {/* Card 1: The Hindu (Large) */}
               <a
-                href="#"
+                href="https://www.thehindu.com/food/features/how-coffee-spaces-have-become-hyderabads-new-community-hubs/article70398693.ece"
+                target="_blank"
+                rel="noreferrer"
                 className="card image-zoom fade-in visible"
                 style={{
                   gridColumn: "span 2",
@@ -149,7 +155,7 @@ const InNews = () => {
                 >
                   <img
                     src={magazineImage2}
-                    alt="Barista at Work"
+                    alt="Community Hubs"
                     style={{
                       width: "100%",
                       height: "100%",
@@ -169,7 +175,7 @@ const InNews = () => {
                       letterSpacing: "1px",
                     }}
                   >
-                    Food & Lifestyle
+                    The Hindu
                   </div>
                 </div>
                 <div
@@ -197,26 +203,15 @@ const InNews = () => {
                       }}
                     >
                       <span>Dec 18, 2025</span>
-                      <span
-                        style={{
-                          width: "30px",
-                          height: "1px",
-                          backgroundColor: "var(--primary)",
-                          display: "inline-block",
-                        }}
-                      ></span>
-                      <span>The Hindu</span>
                     </div>
                     <h3
                       style={{
                         fontSize: "2.2rem",
                         marginBottom: "20px",
                         lineHeight: "1.2",
-                        letterSpacing: "0",
                       }}
                     >
-                      How coffee spaces have become Hyderabad’s new community
-                      hubs
+                      Grano Coffee Affairs: Hyderabad’s New Community Hub
                     </h3>
                     <p
                       style={{
@@ -225,7 +220,7 @@ const InNews = () => {
                         lineHeight: "1.8",
                         marginBottom: "30px",
                         display: "-webkit-box",
-                        WebkitLineClamp: "4",
+                        WebkitLineClamp: "3",
                         WebkitBoxOrient: "vertical",
                         overflow: "hidden",
                       }}
@@ -233,15 +228,10 @@ const InNews = () => {
                       For Syed Mujtaba Ali, partner at Grano – Coffee Affairs in
                       Jubilee Hills, cafés were the natural choice for
                       connection. "When we were in college, cafés were the only
-                      places we could truly hang out," he says. "Not
-                      restaurants." That sense of ease prompted him and his
-                      partner to start Grano.
+                      places we could truly hang out," he says.
                     </p>
                   </div>
-                  <a
-                    href="https://www.thehindu.com/food/features/how-coffee-spaces-have-become-hyderabads-new-community-hubs/article70398693.ece"
-                    target="_blank"
-                    rel="noreferrer"
+                  <div
                     className="read-more-btn"
                     style={{
                       fontWeight: "600",
@@ -268,549 +258,683 @@ const InNews = () => {
                     >
                       →
                     </span>
-                  </a>
+                  </div>
                 </div>
               </a>
 
-              {/* Stacked Secondary News Articles */}
-              <div
+              {/* Card 2: News18 (Medium) */}
+              <a
+                href="https://www.news18.com/photogallery/cities/hyderabad-news/hyderabads-top-5-garden-cafes-for-coffee-calm-and-cozy-catch-ups-shil-ws-l-9884548.html"
+                target="_blank"
+                rel="noreferrer"
+                className="card image-zoom fade-in visible"
                 style={{
+                  gridColumn: "span 1",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "20px",
                   height: "100%",
+                  textDecoration: "none",
+                  color: "inherit",
+                  borderRadius: "0",
+                  border: "1px solid #EBEBEB",
+                  boxShadow: "none",
+                  transition: "all 0.4s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-10px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 30px 60px rgba(0,0,0,0.08)";
+                  e.currentTarget.style.borderColor = "transparent";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--primary)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.borderColor = "#EBEBEB";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--text)";
                 }}
               >
-                {/* Secondary News 1 */}
-                <a
-                  href="https://unscriptedadventures.blog/2025/04/07/grano-coffee-affairs-a-slow-brewed-morning/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="card image-zoom fade-in visible"
+                <div
                   style={{
-                    transitionDelay: "0.1s",
+                    position: "relative",
+                    height: "350px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <img
+                    src={magazineImage3}
+                    alt="Top 5 Garden Cafes"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "20px",
+                      left: "20px",
+                      backgroundColor: "#fff",
+                      padding: "8px 16px",
+                      fontSize: "0.75rem",
+                      fontWeight: "bold",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    News18
+                  </div>
+                </div>
+                <div
+                  style={{
+                    padding: "30px",
+                    flexGrow: "1",
                     display: "flex",
                     flexDirection: "column",
-                    flexGrow: "1",
-                    textDecoration: "none",
-                    color: "inherit",
-                    borderRadius: "0",
-                    border: "1px solid #EBEBEB",
-                    boxShadow: "none",
-                    transition: "all 0.4s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-5px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 20px 40px rgba(0,0,0,0.08)";
-                    e.currentTarget.style.borderColor = "transparent";
-                    const btn = e.currentTarget.querySelector(
-                      ".read-more-btn",
-                    ) as HTMLElement;
-                    if (btn) btn.style.color = "var(--primary)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "none";
-                    e.currentTarget.style.borderColor = "#EBEBEB";
-                    const btn = e.currentTarget.querySelector(
-                      ".read-more-btn",
-                    ) as HTMLElement;
-                    if (btn) btn.style.color = "var(--text)";
+                    backgroundColor: "#fff",
                   }}
                 >
                   <div
                     style={{
-                      position: "relative",
-                      height: "200px",
+                      color: "var(--primary)",
+                      fontSize: "0.85rem",
+                      fontWeight: "600",
+                      marginBottom: "10px",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Dec 22, 2025
+                  </div>
+                  <h4
+                    style={{
+                      fontSize: "1.4rem",
+                      marginBottom: "15px",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    Grano Ranked Among Top Garden Cafés For Coffee & Calm
+                  </h4>
+                  <p
+                    style={{
+                      color: "var(--text-light)",
+                      fontSize: "1rem",
+                      lineHeight: "1.6",
+                      marginBottom: "20px",
+                      flexGrow: "1",
+                      display: "-webkit-box",
+                      WebkitLineClamp: "4",
+                      WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                     }}
                   >
-                    <img
-                      src={magazineImage1}
-                      alt="Coffee Art"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
+                    From lush greenery to peaceful vibes, discover why Grano
+                    Coffee Affairs ranks consistently among the top garden cafés
+                    in the city for your next cozy catch-up session.
+                  </p>
                   <div
+                    className="read-more-btn"
                     style={{
-                      padding: "20px",
-                      flexGrow: "1",
-                      display: "flex",
-                      flexDirection: "column",
-                      backgroundColor: "#fff",
+                      fontWeight: "600",
+                      fontSize: "0.85rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                      transition: "color 0.3s ease",
                     }}
                   >
-                    <div
-                      style={{
-                        color: "var(--primary)",
-                        fontSize: "0.75rem",
-                        fontWeight: "600",
-                        marginBottom: "8px",
-                        textTransform: "uppercase",
-                        letterSpacing: "1px",
-                      }}
-                    >
-                      Unscripted Adventures • Apr 07, 2025
-                    </div>
-                    <h4
-                      style={{
-                        fontSize: "1.2rem",
-                        marginBottom: "10px",
-                        lineHeight: "1.4",
-                      }}
-                    >
-                      Grano Coffee Affairs: A Slow-Brewed Morning
-                    </h4>
-                    <p
-                      style={{
-                        color: "var(--text-light)",
-                        fontSize: "0.95rem",
-                        lineHeight: "1.6",
-                        marginBottom: "15px",
-                        flexGrow: "1",
-                        display: "-webkit-box",
-                        WebkitLineClamp: "2",
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden",
-                      }}
-                    >
-                      A detailed blog review capturing the essence of our
-                      slow-brewed coffee experience and inviting ambiance.
-                    </p>
-                    <div
-                      className="read-more-btn"
-                      style={{
-                        fontWeight: "600",
-                        fontSize: "0.8rem",
-                        textTransform: "uppercase",
-                        letterSpacing: "1px",
-                        transition: "color 0.3s ease",
-                      }}
-                    >
-                      Read More
-                    </div>
+                    Read Article
                   </div>
-                </a>
-
-                {/* Secondary News 2 */}
-                <a
-                  href="https://www.zomato.com/hyderabad/grano-coffee-affairs-jubilee-hills"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="card image-zoom fade-in visible"
-                  style={{
-                    transitionDelay: "0.2s",
-                    display: "flex",
-                    flexDirection: "column",
-                    flexGrow: "1",
-                    textDecoration: "none",
-                    color: "inherit",
-                    borderRadius: "0",
-                    border: "1px solid #EBEBEB",
-                    boxShadow: "none",
-                    transition: "all 0.4s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-5px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 20px 40px rgba(0,0,0,0.08)";
-                    e.currentTarget.style.borderColor = "transparent";
-                    const btn = e.currentTarget.querySelector(
-                      ".read-more-btn",
-                    ) as HTMLElement;
-                    if (btn) btn.style.color = "var(--primary)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "none";
-                    e.currentTarget.style.borderColor = "#EBEBEB";
-                    const btn = e.currentTarget.querySelector(
-                      ".read-more-btn",
-                    ) as HTMLElement;
-                    if (btn) btn.style.color = "var(--text)";
-                  }}
-                >
-                  <div
-                    style={{
-                      position: "relative",
-                      height: "200px",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <img
-                      src={magazineImage3}
-                      alt="Cafe Interior"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      padding: "20px",
-                      flexGrow: "1",
-                      display: "flex",
-                      flexDirection: "column",
-                      backgroundColor: "#fff",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: "var(--primary)",
-                        fontSize: "0.75rem",
-                        fontWeight: "600",
-                        marginBottom: "8px",
-                        textTransform: "uppercase",
-                        letterSpacing: "1px",
-                      }}
-                    >
-                      Zomato • Trusted Reviews
-                    </div>
-                    <h4
-                      style={{
-                        fontSize: "1.2rem",
-                        marginBottom: "10px",
-                        lineHeight: "1.4",
-                      }}
-                    >
-                      Grano Coffee Affairs - Rated Highly by the Community
-                    </h4>
-                    <p
-                      style={{
-                        color: "var(--text-light)",
-                        fontSize: "0.95rem",
-                        lineHeight: "1.6",
-                        marginBottom: "15px",
-                        flexGrow: "1",
-                        display: "-webkit-box",
-                        WebkitLineClamp: "2",
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden",
-                      }}
-                    >
-                      See what thousands of happy customers are saying about our
-                      coffee, food, and ambiance on Zomato.
-                    </p>
-                    <div
-                      className="read-more-btn"
-                      style={{
-                        fontWeight: "600",
-                        fontSize: "0.8rem",
-                        textTransform: "uppercase",
-                        letterSpacing: "1px",
-                        transition: "color 0.3s ease",
-                      }}
-                    >
-                      Read More
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Upcoming Events Module */}
-        <section className="section" style={{ backgroundColor: "#FAF8F5" }}>
-          <div className="container">
-            <div className="text-center mb-5 fade-in visible">
-              <span className="subheading" style={{ justifyContent: "center" }}>
-                Mark Your Calendar
-              </span>
-              <h2>UPCOMING EVENTS</h2>
+                </div>
+              </a>
             </div>
 
+            {/* BOTTOM ROW: 4 Columns */}
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                gap: "30px",
-                marginTop: "40px",
+                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                gap: "20px",
               }}
             >
-              {/* Event 1 */}
-              <div
-                className="menu-card fade-in visible"
+              {/* Card 3: Siasat Pet */}
+              <a
+                href="https://www.siasat.com/list-of-8-trending-pet-friendly-cafes-in-hyderabad-in-2025-3232730/"
+                target="_blank"
+                rel="noreferrer"
+                className="card image-zoom fade-in visible"
                 style={{
-                  transitionDelay: "0.1s",
                   display: "flex",
                   flexDirection: "column",
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+                  height: "100%",
+                  textDecoration: "none",
+                  color: "inherit",
+                  borderRadius: "0",
+                  border: "1px solid #EBEBEB",
+                  boxShadow: "none",
+                  transition: "all 0.4s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 20px 40px rgba(0,0,0,0.06)";
+                  e.currentTarget.style.borderColor = "transparent";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--primary)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.borderColor = "#EBEBEB";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--text)";
                 }}
               >
-                <div style={{ height: "220px", overflow: "hidden" }}>
+                <div
+                  style={{
+                    position: "relative",
+                    height: "200px",
+                    overflow: "hidden",
+                  }}
+                >
                   <img
-                    src={eventsCoffee}
-                    alt="Event 1"
+                    src={magazineImage1}
+                    alt="Pet Friendly"
                     style={{
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      transition: "transform 0.3s ease",
                     }}
                   />
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      left: "15px",
+                      backgroundColor: "#fff",
+                      padding: "6px 12px",
+                      fontSize: "0.7rem",
+                      fontWeight: "bold",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Siasat
+                  </div>
                 </div>
                 <div
                   style={{
-                    padding: "24px",
-                    flexGrow: 1,
+                    padding: "25px",
+                    flexGrow: "1",
                     display: "flex",
                     flexDirection: "column",
+                    backgroundColor: "#fff",
                   }}
                 >
                   <div
                     style={{
-                      color: "#C5A480",
+                      color: "var(--primary)",
+                      fontSize: "0.8rem",
                       fontWeight: "600",
-                      fontSize: "0.9rem",
                       marginBottom: "8px",
                       textTransform: "uppercase",
                       letterSpacing: "1px",
                     }}
                   >
-                    March 25, 2026 • 11:00 AM
+                    Jan 10, 2026
                   </div>
-                  <h3
+                  <h4
                     style={{
-                      fontSize: "1.4rem",
+                      fontSize: "1.15rem",
                       marginBottom: "12px",
-                      color: "#1a1a1a",
+                      lineHeight: "1.4",
                     }}
                   >
-                    Latte Art Workshop
-                  </h3>
+                    Cafe Grano Highlighted as a Premium Pet-Friendly Destination
+                  </h4>
                   <p
                     style={{
-                      color: "#666",
-                      lineHeight: "1.6",
-                      marginBottom: "20px",
-                      flexGrow: 1,
-                    }}
-                  >
-                    Learn the secrets of creating beautiful latte art from our
-                    expert baristas. Perfect for coffee enthusiasts wanting to
-                    elevate their home brewing experience.
-                  </p>
-                  <button
-                    className="btn btn-primary"
-                    style={{
-                      width: "100%",
-                      padding: "12px",
+                      color: "var(--text-light)",
                       fontSize: "0.95rem",
+                      lineHeight: "1.6",
+                      marginBottom: "15px",
+                      flexGrow: "1",
+                      display: "-webkit-box",
+                      WebkitLineClamp: "3",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
-                    Reserve Spot
-                  </button>
+                    Looking for the perfect spot to hang out with your furry
+                    friend? Cafe Grano has been recognized as one of the best
+                    trending pet-friendly destinations offering special treats.
+                  </p>
+                  <div
+                    className="read-more-btn"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "0.8rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Read Article
+                  </div>
                 </div>
-              </div>
+              </a>
 
-              {/* Event 2 */}
-              <div
-                className="menu-card fade-in visible"
+              {/* Card 4: Siasat Garden Hub */}
+              <a
+                href="https://www.siasat.com/jubilee-hills-hyderabads-hub-of-garden-cafes-10-spots-to-visit-3335603/"
+                target="_blank"
+                rel="noreferrer"
+                className="card image-zoom fade-in visible"
                 style={{
-                  transitionDelay: "0.2s",
                   display: "flex",
                   flexDirection: "column",
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+                  height: "100%",
+                  textDecoration: "none",
+                  color: "inherit",
+                  borderRadius: "0",
+                  border: "1px solid #EBEBEB",
+                  boxShadow: "none",
+                  transition: "all 0.4s ease",
+                  transitionDelay: "0.1s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 20px 40px rgba(0,0,0,0.06)";
+                  e.currentTarget.style.borderColor = "transparent";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--primary)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.borderColor = "#EBEBEB";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--text)";
                 }}
               >
-                <div style={{ height: "220px", overflow: "hidden" }}>
+                <div
+                  style={{
+                    position: "relative",
+                    height: "200px",
+                    overflow: "hidden",
+                  }}
+                >
                   <img
                     src={eventsOutdoor}
-                    alt="Event 2"
+                    alt="Garden Cafes Hub"
                     style={{
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      transition: "transform 0.3s ease",
                     }}
                   />
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      left: "15px",
+                      backgroundColor: "#fff",
+                      padding: "6px 12px",
+                      fontSize: "0.7rem",
+                      fontWeight: "bold",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Siasat
+                  </div>
                 </div>
                 <div
                   style={{
-                    padding: "24px",
-                    flexGrow: 1,
+                    padding: "25px",
+                    flexGrow: "1",
                     display: "flex",
                     flexDirection: "column",
+                    backgroundColor: "#fff",
                   }}
                 >
                   <div
                     style={{
-                      color: "#C5A480",
+                      color: "var(--primary)",
+                      fontSize: "0.8rem",
                       fontWeight: "600",
-                      fontSize: "0.9rem",
                       marginBottom: "8px",
                       textTransform: "uppercase",
                       letterSpacing: "1px",
                     }}
                   >
-                    April 2, 2026 • 6:30 PM
+                    Feb 05, 2026
                   </div>
-                  <h3
+                  <h4
                     style={{
-                      fontSize: "1.4rem",
+                      fontSize: "1.15rem",
                       marginBottom: "12px",
-                      color: "#1a1a1a",
+                      lineHeight: "1.4",
                     }}
                   >
-                    Live Acoustic Evening
-                  </h3>
+                    Experience the Best of Jubilee Hills' Garden Cafes at Grano
+                  </h4>
                   <p
                     style={{
-                      color: "#666",
-                      lineHeight: "1.6",
-                      marginBottom: "20px",
-                      flexGrow: 1,
-                    }}
-                  >
-                    Unwind with great coffee, delicious bites, and soothing live
-                    acoustic music under the stars in our outdoor courtyard.
-                  </p>
-                  <button
-                    className="btn btn-primary"
-                    style={{
-                      width: "100%",
-                      padding: "12px",
+                      color: "var(--text-light)",
                       fontSize: "0.95rem",
+                      lineHeight: "1.6",
+                      marginBottom: "15px",
+                      flexGrow: "1",
+                      display: "-webkit-box",
+                      WebkitLineClamp: "3",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
-                    Get Tickets
-                  </button>
+                    Jubilee Hills is Hyderabad's undeniable hub for nature
+                    lovers. Explore why Grano stands out with its inviting
+                    ambiance, open courtyard, and slow-brewed magic.
+                  </p>
+                  <div
+                    className="read-more-btn"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "0.8rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Read Article
+                  </div>
                 </div>
-              </div>
+              </a>
 
-              {/* Event 3 */}
-              <div
-                className="menu-card fade-in visible"
+              {/* Card 5: Travel and Leisure */}
+              <a
+                href="https://www.travelandleisureasia.com/my/dining/best-restaurants-to-break-your-fast-at-in-hyderabad-this-ramadan-2025/"
+                target="_blank"
+                rel="noreferrer"
+                className="card image-zoom fade-in visible"
                 style={{
-                  transitionDelay: "0.3s",
                   display: "flex",
                   flexDirection: "column",
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+                  height: "100%",
+                  textDecoration: "none",
+                  color: "inherit",
+                  borderRadius: "0",
+                  border: "1px solid #EBEBEB",
+                  boxShadow: "none",
+                  transition: "all 0.4s ease",
+                  transitionDelay: "0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 20px 40px rgba(0,0,0,0.06)";
+                  e.currentTarget.style.borderColor = "transparent";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--primary)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.borderColor = "#EBEBEB";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--text)";
                 }}
               >
-                <div style={{ height: "220px", overflow: "hidden" }}>
+                <div
+                  style={{
+                    position: "relative",
+                    height: "200px",
+                    overflow: "hidden",
+                  }}
+                >
                   <img
                     src={newsBg}
-                    alt="Event 3"
+                    alt="Travel & Leisure"
                     style={{
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      transition: "transform 0.3s ease",
                     }}
                   />
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      left: "15px",
+                      backgroundColor: "#fff",
+                      padding: "6px 12px",
+                      fontSize: "0.7rem",
+                      fontWeight: "bold",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Travel & Leisure
+                  </div>
                 </div>
                 <div
                   style={{
-                    padding: "24px",
-                    flexGrow: 1,
+                    padding: "25px",
+                    flexGrow: "1",
                     display: "flex",
                     flexDirection: "column",
+                    backgroundColor: "#fff",
                   }}
                 >
                   <div
                     style={{
-                      color: "#C5A480",
+                      color: "var(--primary)",
+                      fontSize: "0.8rem",
                       fontWeight: "600",
-                      fontSize: "0.9rem",
                       marginBottom: "8px",
                       textTransform: "uppercase",
                       letterSpacing: "1px",
                     }}
                   >
-                    April 10, 2026 • 2:00 PM
+                    Mar 01, 2026
                   </div>
-                  <h3
+                  <h4
                     style={{
-                      fontSize: "1.4rem",
+                      fontSize: "1.15rem",
                       marginBottom: "12px",
-                      color: "#1a1a1a",
+                      lineHeight: "1.4",
                     }}
                   >
-                    Roasting Masterclass
-                  </h3>
+                    Grano Cafe: A Top Serene Spot To Break Your Fast This
+                    Ramadan
+                  </h4>
                   <p
                     style={{
-                      color: "#666",
-                      lineHeight: "1.6",
-                      marginBottom: "20px",
-                      flexGrow: 1,
-                    }}
-                  >
-                    Discover the art of roasting coffee beans. Taste different
-                    roasts, learn about flavor profiles, and take home your own
-                    custom blend.
-                  </p>
-                  <button
-                    className="btn btn-primary"
-                    style={{
-                      width: "100%",
-                      padding: "12px",
+                      color: "var(--text-light)",
                       fontSize: "0.95rem",
+                      lineHeight: "1.6",
+                      marginBottom: "15px",
+                      flexGrow: "1",
+                      display: "-webkit-box",
+                      WebkitLineClamp: "3",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
-                    Book Now
-                  </button>
+                    Celebrate the spirit of Ramadan at Cafe Grano with our
+                    special curated evening menu, recognized as a highly serene
+                    and loved location in Hyderabad.
+                  </p>
+                  <div
+                    className="read-more-btn"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "0.8rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Read Article
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
+              </a>
 
-        {/* Intro for News/Influencers */}
-        <section
-          className="section"
-          style={{ backgroundColor: "#fff", paddingBottom: "0" }}
-        >
-          <div className="container">
-            <div className="text-center mb-5 fade-in visible">
-              <span className="subheading" style={{ justifyContent: "center" }}>
-                Media & Community
-              </span>
-              <h2>INFLUENCER REVIEWS & HAPPY CUSTOMERS</h2>
-              <p
+              {/* Card 6: Bungalower */}
+              <a
+                href="https://bungalower.com/2025/12/23/whats-in-a-name-fairbanks-ave-bakery-rebrands-again-as-ngrano-cafe-bakery/"
+                target="_blank"
+                rel="noreferrer"
+                className="card image-zoom fade-in visible"
                 style={{
-                  maxWidth: "800px",
-                  margin: "0 auto",
-                  marginTop: "1rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  textDecoration: "none",
+                  color: "inherit",
+                  borderRadius: "0",
+                  border: "1px solid #EBEBEB",
+                  boxShadow: "none",
+                  transition: "all 0.4s ease",
+                  transitionDelay: "0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 20px 40px rgba(0,0,0,0.06)";
+                  e.currentTarget.style.borderColor = "transparent";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--primary)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.borderColor = "#EBEBEB";
+                  const btn = e.currentTarget.querySelector(
+                    ".read-more-btn",
+                  ) as HTMLElement;
+                  if (btn) btn.style.color = "var(--text)";
                 }}
               >
-                We are incredibly grateful for the love and support from our
-                community, influencers, and media partners. Discover what people
-                have to say about the Cafe Grano experience.
-              </p>
+                <div
+                  style={{
+                    position: "relative",
+                    height: "200px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <img
+                    src={eventsCoffee}
+                    alt="Rebranding"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      left: "15px",
+                      backgroundColor: "#fff",
+                      padding: "6px 12px",
+                      fontSize: "0.7rem",
+                      fontWeight: "bold",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Bungalower
+                  </div>
+                </div>
+                <div
+                  style={{
+                    padding: "25px",
+                    flexGrow: "1",
+                    display: "flex",
+                    flexDirection: "column",
+                    backgroundColor: "#fff",
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "var(--primary)",
+                      fontSize: "0.8rem",
+                      fontWeight: "600",
+                      marginBottom: "8px",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Dec 23, 2025
+                  </div>
+                  <h4
+                    style={{
+                      fontSize: "1.15rem",
+                      marginBottom: "12px",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    Cafe Grano Begins a New Chapter with Exciting Expansion
+                  </h4>
+                  <p
+                    style={{
+                      color: "var(--text-light)",
+                      fontSize: "0.95rem",
+                      lineHeight: "1.6",
+                      marginBottom: "15px",
+                      flexGrow: "1",
+                      display: "-webkit-box",
+                      WebkitLineClamp: "3",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}
+                  >
+                    A look at our ongoing brand evolution and recent expansions
+                    as N'Grano Cafe, marking an exciting new chapter of growth
+                    for your favorite coffee destination.
+                  </p>
+                  <div
+                    className="read-more-btn"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "0.8rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Read Article
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
         </section>
-
-        {/* Happy Customers / Reviews */}
-        <TestimonialsSection />
-
-        {/* Upcoming Events */}
-        <EventsSection />
 
         {/* Call to action */}
         <CTASection
-          title="Join Our Community"
-          description="Follow us on social media or reach out to partner with us for your next feature."
-          buttonText="Contact Us"
+          title="Interested In A Feature?"
+          description="We are always open to collaborating with lifestyle magazines, food critics, and local media. Reach out to get in touch with our PR team."
+          buttonText="Contact PR Team"
         />
       </main>
       <Footer />

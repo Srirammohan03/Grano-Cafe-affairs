@@ -35,7 +35,7 @@ const EventsSection = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJzo4YjSftOutD-GTE8qaScbMeTV5MAENtaNCuOqod1I8deLqd6BuZXGLCqBBO_LES6g/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqHXkvb6umqWtQPDB2wWhC157AUI65UOO2XKTRgRc6Zz2HH9hO-XywmNmpJVGbCE8bpQ/exec";
 
 const handleEventSubmit = async (e:any) => {
 
